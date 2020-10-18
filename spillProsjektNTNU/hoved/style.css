@@ -31,14 +31,14 @@ body {
   text-align: center;
 }
 
-#gameGrid {
+#game {
   padding: 5%;
   padding: 5%;
   background-color: black;
   height: 100%;
 }
 
-#gameGrid>div {
+#game>div {
   display: block;
   width: auto;
   margin-left: 32.5%;
@@ -50,4 +50,10 @@ body {
 }
 .container>div>p:hover{
   color: #480607;
+}
+#controls>h1, #leaderboard>h1 {
+  font-size: 400%;
+}
+#controls>p, #leaderboard>p {
+  font-size: 150%;
 }
