@@ -9,11 +9,25 @@
       rel="stylesheet"
       type="text/css"
     />
+    <!--Google Icons for tannjul-ikone.-->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
   </head>
   <body>
     <main>
+      <!--Innstillinger-->
+      <i class="material-icons" id="innstillinger">settings</i>
+      <div id="myDropdown" class="dropdown-content">
+        <div id="VisTekst">
+          <b>Vis regler og scoreboard</b>
+          <input type="checkbox" id="hideRules" onclick="sjekkData()" checked />
+        </div>
+      </div>
+      <!-- -->
       <div id="title">
-        <h1>Natt</h1>
+        <h1>Nattmat</h1>
       </div>
       <div id="grid-container">
         <div id="controls">

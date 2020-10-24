@@ -1,7 +1,7 @@
 * {
   color: maroon;
   margin: 10px;
-  font-family: 'VT323';
+  font-family: "VT323";
   position: relative;
   vertical-align: top;
   text-transform: uppercase;
@@ -12,7 +12,7 @@ body {
   margin: 3.5%;
   margin-top: 1.5%;
 }
-#title>h1 {
+#title > h1 {
   text-align: center;
   font-size: 800%;
   margin-bottom: 2%;
@@ -22,7 +22,7 @@ body {
   grid-template-columns: 1fr 3fr 1fr;
   grid-gap: 4.7%;
 }
-#grid-container>div{
+#grid-container > div {
   border-style: solid;
   border-color: maroon;
   text-align: center;
@@ -34,7 +34,7 @@ body {
   height: 100%;
 }
 
-.btnContainer>div {
+.btnContainer > div {
   display: block;
   width: auto;
   margin-top: 3%;
@@ -42,7 +42,7 @@ body {
   font-size: 500%;
   cursor: grab;
 }
-.knappHover>p:hover {
+.knappHover > p:hover {
   color: #480607;
 }
 .btnContainer {
@@ -50,13 +50,84 @@ body {
   min-height: 45vh;
   margin-top: 10vh;
 }
-#controls>h1, #leaderboard>h1 {
+#controls > h1,
+#leaderboard > h1 {
   font-size: 400%;
 }
-#controls>p, #leaderboard>p {
+#controls > p,
+#leaderboard > p {
   font-size: 150%;
 }
-#controls, #leaderboard {
+#controls,
+#leaderboard {
   margin-top: 40%;
   margin-bottom: 40%;
 }
+/* Settings ikonet*/
+
+#innstillinger {
+  position: sticky;
+  right: 1270px;
+  top: 10px;
+  color: red;
+  cursor: pointer;
+
+  /* Man skal ikke kunne markere elementet med musen*/
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dropdown-content {
+  margin-top: 100px;
+  width: 240px;
+  height: 40px;
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  /* Man skal ikke kunne markere elementet med musen*/
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+
+  /* Man skal ikke kunne markere elementet med musen*/
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.dropdown a:hover {
+  background-color: #ddd;
+}
+
+.show {
+  display: block;
+}
+#VisTekst {
+  left: 15px;
+  top: 5px;
+  position: relative;
+}
+
+/*Settings ikonet*/
