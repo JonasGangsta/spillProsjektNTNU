@@ -15,7 +15,7 @@ function resetFunksjon() {
   <div class="knappHover" onclick=creditsFunksjon()><p>Credits</p></div>`;
 }
 
-/* When the user clicks on the button, 
+/* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
 let button = document.getElementById("innstillinger");
 let rules = document.getElementById("controls");
@@ -48,3 +48,6 @@ function sjekkData() {
     highscore.style.display = "block";
   }
 }
+
+
+ 
