@@ -1,19 +1,58 @@
 const $ = document.querySelector.bind(document);
 const game = $("#game");
 const btnContainer = $(".btnContainer");
+let mode; //Bestemmer om spillet har startet
+let platformer = []
+var element = document.getElementById('game');
 
-function startFunksjon() {}
-function prosjektFunksjon() {
-  btnContainer.innerHTML = `<div style="font-size: 300%;" ><p>Programmering: Jonas Andorsen</p> <p>Prosjektleder: Bendik</p><div class="knappHover"><p onclick="resetFunksjon()" style="border: solid; border-color: maroon; margin-left: 40%; margin-right: 40%; margin-top: 5%;">Menu</p></div></div>`;
+function setup(){
+  mode = 0; // Starter mode på 0, altså er spillet ikke startet enda
+  var canvas = createCanvas(windowWidth/1.9, windowHeight/1.5)
+  canvas.parent(`game`);
+  textSize(windowWidth/20);
+  let k= 0;
+  for (let i = 0; k < 30; i += 1){
+     k++
+     platformer[i] = new Platform
+     for (let j = 0; j< platformer.length -1; j++){
+       if(platformer[i].x+platformer[i].w > platformer[j].x && platformer[i].x < platformer[j].x+platformer[j].w && platformer[i].y+platformer[i].h > platformer[j].y && platformer[i].y < platformer[j].y + platformer[j].h){
+         platformer.pop()
+         i--
+       }
+     }
+  }
 }
-function creditsFunksjon() {
-  btnContainer.innerHTML = `<div style="font-size: 300%;" ><p>Programmering: Jonas Andorsen</p> <div class="knappHover"><p>Prosjektleder: Bendik</p><p onclick="resetFunksjon()" style="border: solid; border-color: maroon; margin-left: 40%; margin-right: 40%; margin-top: 5%;">Menu</p></div></div>`;
+
+
+
+function draw(){
+  clear()
+  if(mode==0){
+    background(0)
+    fill(`Maroon`)
+    textFont("VT323")
+    textAlign(CENTER);
+    text(`CLICK ENTER TO START`, windowWidth/3.8, windowHeight/3);
+  }
+  if(mode==1){
+    background(0);
+    for (let i = platformer.length -1; i > 0; i -= 1) {
+      platformer[i].tegn();
+    }
+  }
 }
-function resetFunksjon() {
-  btnContainer.innerHTML = `  <div class="knappHover" onclick=startFunksjon()><p>Start</p></div>
-  <div class="knappHover" onclick=prosjektFunksjon()><p>Prosjekt</p></div>
-  <div class="knappHover" onclick=creditsFunksjon()><p>Credits</p></div>`;
+function keyPressed(){
+  if (keyCode===ENTER) {     //Hvis ENTER trykkes blir mode = 1 og spillet startes
+    mode = 1;
+  }
+  if (keyCode===8) {
+    resetSketch();
+  }
 }
+
+
+
+
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
@@ -48,6 +87,3 @@ function sjekkData() {
     highscore.style.display = "block";
   }
 }
-
-
- 
