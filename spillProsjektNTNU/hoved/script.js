@@ -23,18 +23,28 @@ function setup(){
   }
 }
 
-
-
 function draw(){
   clear()
   if(mode==0){
-    background(0)
-    fill(`Maroon`)
-    textFont("VT323")
-    textAlign(CENTER);
-    text(`CLICK ENTER TO START`, windowWidth/3.8, windowHeight/3);
+    if (frameCount % 180 < 110){
+      drawingContext.shadowOffsetX = -2.5;
+      drawingContext.shadowOffsetY = 2.5;
+      drawingContext.shadowBlur = 3;
+      drawingContext.shadowColor = 'red';
+      background(0)
+      fill(`Maroon`)
+      textFont("VT323")
+      textAlign(CENTER);
+      text(`CLICK ENTER TO START`, windowWidth/3.8, windowHeight/3);
+    } else {
+      background(0)
+    }
   }
   if(mode==1){
+    drawingContext.shadowOffsetX = -2.5;
+    drawingContext.shadowOffsetY = 2.5;
+    drawingContext.shadowBlur = 2;
+    drawingContext.shadowColor = 'red';
     background(0);
     for (let i = platformer.length -1; i > 0; i -= 1) {
       platformer[i].tegn();

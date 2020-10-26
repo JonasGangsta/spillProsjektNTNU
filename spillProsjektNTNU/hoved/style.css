@@ -17,6 +17,7 @@ body {
   font-size: 800%;
   margin-bottom: 2%;
   margin-top: 1%;
+  text-shadow: -1px 1px red;
 }
 #grid-container {
   display: grid;
@@ -55,6 +56,7 @@ body {
 #controls > h1,
 #leaderboard > h1 {
   font-size: 400%;
+  text-shadow: -1px 1px red;
 }
 #controls > p,
 #leaderboard > p {
