@@ -2,8 +2,9 @@ const $ = document.querySelector.bind(document);
 const game = $("#game");
 const btnContainer = $(".btnContainer");
 let mode; //Bestemmer om spillet har startet
-let platformer = []
+let platformer = [];
 var element = document.getElementById('game');
+let goal;
 
 function setup(){
   mode = 0; // Starter mode på 0, altså er spillet ikke startet enda
@@ -21,6 +22,9 @@ function setup(){
        }
      }
   }
+  console.log(platformer)
+  goal = new Goal
+  console.log(goal);
 }
 
 function draw(){
@@ -49,6 +53,7 @@ function draw(){
     for (let i = platformer.length -1; i > 0; i -= 1) {
       platformer[i].tegn();
     }
+    goal.tegn();
   }
 }
 function keyPressed(){
