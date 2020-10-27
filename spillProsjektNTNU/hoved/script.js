@@ -5,6 +5,7 @@ let mode; //Bestemmer om spillet har startet
 let platformer = [];
 var element = document.getElementById('game');
 let goal;
+let spiller;
 
 function setup(){
   mode = 0; // Starter mode på 0, altså er spillet ikke startet enda
@@ -13,6 +14,7 @@ function setup(){
   textSize(windowWidth/20);
   let k= 0;
   for (let i = 0; k < 30; i += 1){
+      console.log("Lager platform")
      k++
      platformer[i] = new Platform
      for (let j = 0; j< platformer.length -1; j++){
@@ -24,6 +26,7 @@ function setup(){
   }
   console.log(platformer)
   goal = new Goal
+  spiller = new Spiller
   console.log(goal);
 }
 
@@ -44,16 +47,18 @@ function draw(){
       background(0)
     }
   }
-  if(mode==1){
+  if (mode==1){
     drawingContext.shadowOffsetX = -2.5;
     drawingContext.shadowOffsetY = 2.5;
     drawingContext.shadowBlur = 2;
     drawingContext.shadowColor = 'red';
     background(0);
-    for (let i = platformer.length -1; i > 0; i -= 1) {
+    for (let i = platformer.length -1; i >= 0; i -= 1) {
       platformer[i].tegn();
     }
     goal.tegn();
+    spiller.tegn();
+    spiller.flytt();
   }
 }
 function keyPressed(){
@@ -63,6 +68,16 @@ function keyPressed(){
   if (keyCode===8) {
     resetSketch();
   }
+  if (keyCode === 37) {
+       spiller.retning = -1;
+    }
+  if (keyCode === 39) {
+       spiller.retning = 1;
+    }
+}
+
+function keyReleased() {
+    spiller.retning = 0;
 }
 
 
