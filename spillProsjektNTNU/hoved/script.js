@@ -3,7 +3,6 @@ const game = $("#game");
 const btnContainer = $(".btnContainer");
 let mode; //Bestemmer om spillet har startet
 let platformer = [];
-var element = document.getElementById('game');
 let goal;
 let spiller;
 

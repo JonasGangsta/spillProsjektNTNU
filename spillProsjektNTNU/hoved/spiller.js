@@ -21,7 +21,7 @@ class Spiller {
       }
     }
     if (!collision){
-      spiller.y = spiller.y + 0.5;
+      spiller.y = spiller.y + 3;
     }
     if (this.x > 0 && this.x < width){
       this.x += this.retning*4;
