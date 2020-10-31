@@ -7,6 +7,10 @@ class Platform {
     this.farge = `maroon`;
   }
   tegn(){
+    drawingContext.shadowOffsetX = -2.5;
+    drawingContext.shadowOffsetY = 2.5;
+    drawingContext.shadowBlur = 2;
+    drawingContext.shadowColor = 'red';
     fill(this.farge);
     rect(this.x, this.y, this.w, this.h);
   }
