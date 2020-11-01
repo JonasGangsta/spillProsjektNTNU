@@ -20,7 +20,7 @@ class Spiller {
     for(let i = 0; i < platformer.length; i++){
       if(platformer[i].x+platformer[i].w > spiller.x &&
           platformer[i].x < spiller.x+spiller.w &&
-          platformer[i].y+platformer[i].h > spiller.y &&
+          platformer[i].y+10 > spiller.y+spiller.h - 1 &&
           platformer[i].y < spiller.y + spiller.h){
             platformCollision = true;
             this.gravitySpeed = 0;

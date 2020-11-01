@@ -20,25 +20,25 @@ function resetSketch() {
   platformer = [];
   hindere = [];
   let k = 0;
-  for (let i = 0; k < 30; i++) {
+  for (let i = 0; k < 40; i++) {
     console.log("Lager platform")
     k++
     platformer[i] = new Platform
     for (let j = 0; j < platformer.length - 1; j++) {
       if (platformer[i].x + platformer[i].w > platformer[j].x &&
         platformer[i].x < platformer[j].x + platformer[j].w &&
-        platformer[i].y + platformer[i].h > platformer[j].y &&
-        platformer[i].y < platformer[j].y + platformer[j].h) {
+        platformer[i].y + platformer[i].h*4 > platformer[j].y &&
+        platformer[i].y-platformer[i].h*2 < platformer[j].y + platformer[j].h) {
         platformer.pop()
         i--
       }
     }
   }
+  goal = new Goal
+  spiller = new Spiller
   for (let i = 0; i <= hinderTall; i++) {
     hindere[i] = new Hinder
   }
-  goal = new Goal
-  spiller = new Spiller
 }
 
 function draw() {
@@ -95,7 +95,11 @@ function draw() {
     text(`CLICK ENTER TO RESTART`, windowWidth / 3.8, windowHeight / 3 + windowHeight / 10);
     fill(`green`);
     drawingContext.shadowColor = `lightGreen`;
-    text(`SCORE: ${score}`, windowWidth / 3.8, windowHeight / 3);
+    if (frameCount % 160 < 90) {
+      text(`SCORE: ${score}`, windowWidth / 3.8, windowHeight / 3);
+    } else {
+
+    }
   }
 }
 
@@ -110,6 +114,8 @@ function keyPressed() {
     spiller.retning = -1;
   } else if (keyCode === 39) {
     spiller.retning = 1;
+  } else if (keyCode === 32) {
+    hopp();
   }
 }
 
@@ -117,6 +123,9 @@ function keyReleased() {
   spiller.retning = 0;
 }
 
+function windowResized() {
+  resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
+}
 
 /* When the user clicks on the button,
 toggle between hiding and showing the dropdown content */
