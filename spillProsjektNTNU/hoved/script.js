@@ -115,7 +115,7 @@ function draw() {
     }
   }
 }
-holdLeft = holdRight = false;
+
 function keyPressed() {
   if (keyCode === ENTER) {
     //Hvis ENTER trykkes blir mode = 1 og spillet startes
@@ -126,7 +126,7 @@ function keyPressed() {
       resetSketch();
     }
   } else if (keyCode === 37) {
-    holdLeft = true;
+    spiller.retning = -1;
   } else if (keyCode === 39) {
     spiller.retning = 1;
   } else if (keyCode === 38) {
