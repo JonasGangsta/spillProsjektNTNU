@@ -34,10 +34,17 @@ function resetSketch() {
       }
     }
   }
+  let platformSpiller = platformer[Math.floor(Math.random() * platformer.length)];
+  platformSpiller.harSpiller = true;
+  spiller = new Spiller(platformSpiller)
   goal = new Goal
-  spiller = new Spiller
   for (let i = 0; i <= hinderTall; i++) {
-    hindere[i] = new Hinder
+    let platform = platformer[Math.floor(Math.random() * platformer.length)];
+    if(platform.harPoeng || platform.harSpiller){
+      i--
+      continue;
+    }
+    hindere[i] = new Hinder(platform)
   }
 }
 
@@ -108,14 +115,18 @@ function keyPressed() {
     if (mode == 2 || mode == 0) {
       mode = 1;
       score = 0;
+      hinderTall = 5;
       resetSketch();
     }
   } else if (keyCode === 37) {
     spiller.retning = -1;
   } else if (keyCode === 39) {
     spiller.retning = 1;
-  } else if (keyCode === 32) {
-    hopp();
+  } else if (keyCode === 38) {
+    spiller.hopp()
+  } else if (keyCode === 40) {
+    spiller.gravitySpeed = 2;
+    spiller.y += 11
   }
 }
 
