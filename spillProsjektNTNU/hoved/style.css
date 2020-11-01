@@ -25,9 +25,21 @@ body {
   grid-gap: 4.7%;
 }
 #grid-container > div {
+  text-align: center;
   border-style: solid;
   border-color: maroon;
-  text-align: center;
+  outline: 2px groove rgb(182, 26, 26);
+}
+#pilopp {
+  color: greenyellow;
+}
+#pilvenstre {
+  color: greenyellow;
+  transform: rotate(270deg);
+}
+#pilhoyre {
+  color: greenyellow;
+  transform: rotate(90deg);
 }
 /*
 #game {
@@ -45,7 +57,7 @@ body {
   font-size: 800%;
   cursor: grab;
 }
-.knappHover >p {
+.knappHover > p {
   text-align: center;
 }
 .btnContainer {
@@ -55,7 +67,7 @@ body {
 }
 #controls > h1,
 #leaderboard > h1 {
-  font-size: 400%;
+  font-size: 250%;
   text-shadow: -1px 1px red;
 }
 #controls > p,
@@ -64,6 +76,7 @@ body {
 }
 #controls,
 #leaderboard {
+  padding: 5%;
   margin-top: 40%;
   margin-bottom: 40%;
 }
