@@ -114,6 +114,12 @@ function draw() {
     } else {
     }
   }
+  if (keyIsDown(37)) {
+    spiller.x -= 4;
+  }
+  if (keyIsDown(39)) {
+    spiller.x +=4;
+  }
 }
 
 function keyPressed() {
@@ -125,20 +131,11 @@ function keyPressed() {
       hinderTall = 5;
       resetSketch();
     }
-  } else if (keyCode === 37) {
-    spiller.retning = -1;
-  } else if (keyCode === 39) {
-    spiller.retning = 1;
   } else if (keyCode === 38) {
     spiller.hopp()
   } else if (keyCode === 40) {
-    spiller.gravitySpeed = 2;
-    spiller.y += 11
+    spiller.ned()
   }
-}
-
-function keyReleased() {
-  spiller.retning = 0;
 }
 
 function windowResized() {

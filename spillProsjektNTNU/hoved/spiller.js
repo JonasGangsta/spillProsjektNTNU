@@ -20,11 +20,9 @@ class Spiller {
       this.gravitySpeed += this.gravity;
       this.y += this.gravitySpeed;
     }
-    if (this.x > 0 && this.x < width) {
-      this.x += this.retning * 4;
-    } else if (this.x < 0) {
+    if (this.x < 0) {
       this.x += 5;
-    } else if (this.x > width) {
+    } else if (this.x > width - this.w) {
       this.x -= 5;
     }
     for (let i = 0; i < hindere.length; i++) {
@@ -49,8 +47,14 @@ class Spiller {
   }
   hopp() {
     if (spiller.kollisjon()) {
-      spiller.gravitySpeed = -6;
+      spiller.gravitySpeed = -7;
       spiller.y = spiller.y - 20;
+    }
+  }
+  ned(){
+    if(spiller.kollisjon()) {
+      spiller.gravitySpeed = 2;
+      spiller.y += 11
     }
   }
   kollisjon() {
