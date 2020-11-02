@@ -34,10 +34,24 @@ function resetSketch() {
       }
     }
   }
+<<<<<<< HEAD
   goal = new Goal
   spiller = new Spiller
   for (let i = 0; i <= hinderTall; i++) {
     hindere[i] = new Hinder
+=======
+  let platformSpiller = platformer[Math.floor(Math.random() * platformer.length)];
+  platformSpiller.harSpiller = true;
+  spiller = new Spiller(platformSpiller)
+  goal = new Goal
+  for (let i = 0; i <= hinderTall; i++) {
+    let platform = platformer[Math.floor(Math.random() * platformer.length)];
+    if(platform.harPoeng || platform.harSpiller){
+      i--
+      continue;
+    }
+    hindere[i] = new Hinder(platform)
+>>>>>>> 33a87b8b8044f3721d644d3d6cd3c0ba991b7513
   }
 }
 
@@ -101,6 +115,12 @@ function draw() {
 
     }
   }
+  if (keyIsDown(37)) {
+    spiller.x -= 4;
+  }
+  if (keyIsDown(39)) {
+    spiller.x +=4;
+  }
 }
 
 function keyPressed() {
@@ -108,19 +128,23 @@ function keyPressed() {
     if (mode == 2 || mode == 0) {
       mode = 1;
       score = 0;
+      hinderTall = 5;
       resetSketch();
     }
+<<<<<<< HEAD
   } else if (keyCode === 37) {
     spiller.retning = -1;
   } else if (keyCode === 39) {
     spiller.retning = 1;
   } else if (keyCode === 32) {
     hopp();
+=======
+  } else if (keyCode === 38) {
+    spiller.hopp()
+  } else if (keyCode === 40) {
+    spiller.ned()
+>>>>>>> 33a87b8b8044f3721d644d3d6cd3c0ba991b7513
   }
-}
-
-function keyReleased() {
-  spiller.retning = 0;
 }
 
 function windowResized() {
