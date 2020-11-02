@@ -5,8 +5,6 @@ class Platform {
     this.w = width/10;
     this.h = height/30;
     this.farge = `maroon`;
-    this.harPoeng = false;
-    this.harSpiller = false;
   }
   tegn(){
     drawingContext.shadowOffsetX = -2.5;

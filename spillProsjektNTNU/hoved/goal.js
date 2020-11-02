@@ -1,7 +1,6 @@
 class Goal {
   constructor() {
     let platform = platformer[Math.floor(Math.random() * platformer.length)]
-    platform.harPoeng = true;
     this.x = platform.x + platform.w / 2;
     this.y = platform.y - platform.h / 1.5;
     this.r = 10;
