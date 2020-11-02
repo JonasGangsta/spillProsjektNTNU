@@ -9,24 +9,96 @@ class Spiller {
     this.retning = 0;
     this.gravity = 0.2;
     this.gravitySpeed = 0;
+    this.armer = 0;
+    this.stille = true;
+    this.motVenstre = false;
+    this.motHoyre = false;
+    this.teste = "#0b6301";
   }
+
   tegn() {
-    drawingContext.shadowColor = "green";
-    fill(this.farge);
-    rect(this.x + 15, this.y, 10, 20);
-    rect(this.x - 6, this.y, 10, 20);
+    //skygge
+    if (this.stille == true) {
+      drawingContext.shadowColor = "green";
 
-    rect(this.x - 6, this.y, 10, 20);
-    rect(this.x, this.y, this.w, this.h);
-    rect(this.x, this.y + 17, 10, 20);
-    rect(this.x + 10, this.y + 17, 9, 20);
+      //Farge for figur
+      fill(this.farge);
 
-    ellipse(this.x + 10, this.y - 5, 20, 20);
-    fill(this.svart);
-    ellipse(this.x + 5, this.y - 5, 3, 3);
-    ellipse(this.x + 15, this.y - 5, 3, 3);
-    arc(this.x + 10, this.y - 2, 8, 8, 0, PI);
+      //Armer
+      rect(this.x + 15, this.y + this.armer, 10, 20);
+
+      rect(this.x - 6, this.y + this.armer, 10, 20);
+
+      //Kropp
+      rect(this.x, this.y, this.w, this.h);
+
+      //Ben
+      rect(this.x, this.y + 17, 10, 20);
+      rect(this.x + 10, this.y + 17, 9, 20);
+      //Hode
+
+      ellipse(this.x + 10, this.y - 5, 20, 20);
+      fill(this.svart);
+      //Øyne
+      ellipse(this.x + 5, this.y - 5, 3, 3);
+      ellipse(this.x + 15, this.y - 5, 3, 3);
+      //Munn
+      arc(this.x + 10, this.y - 2, 8, 8, 0, PI);
+    } else if (this.motVenstre == true) {
+      drawingContext.shadowColor = "green";
+
+      //Farge for figur
+      fill(this.farge);
+      //Armer
+
+      rect(this.x - 2, this.y + this.armer, 10, 20);
+
+      //Kropp
+      rect(this.x, this.y, this.w, this.h);
+
+      //Ben
+      rect(this.x + 4, this.y + 17, 10, 20);
+      rect(this.x + 6, this.y + 17, 9, 20);
+      rect(this.x + 11, this.y + this.armer, 10, 20);
+      //Hode
+
+      ellipse(this.x + 10, this.y - 5, 15, 20);
+      fill(this.svart);
+      //Øyne
+
+      ellipse(this.x + 9, this.y - 5, 3, 3);
+      ellipse(this.x + 4, this.y - 5, 2, 2);
+      //Munn
+      arc(this.x + 6, this.y - 2, 8, 8, 0, PI);
+    } else if (this.motHoyre == true) {
+      drawingContext.shadowColor = "green";
+
+      //Farge for figur
+      fill(this.farge);
+      //Armer
+
+      rect(this.x + 11, this.y + this.armer, 10, 20);
+      //Kropp
+      rect(this.x, this.y, this.w, this.h);
+
+      //Ben
+      rect(this.x + 4, this.y + 17, 10, 20);
+      rect(this.x + 6, this.y + 17, 9, 20);
+      rect(this.x - 2, this.y + this.armer, 10, 20);
+      //Hode
+
+      ellipse(this.x + 10, this.y - 5, 15, 20);
+      fill(this.svart);
+      //Øyne
+
+      ellipse(this.x + 10, this.y - 5, 3, 3);
+      ellipse(this.x + 15, this.y - 5, 2, 2);
+
+      //Munn
+      arc(this.x + 13, this.y - 2, 8, 8, 0, PI);
+    }
   }
+
   flytt() {
     let platformCollision =
       spiller.gravitySpeed < 0 ? false : spiller.kollisjon();

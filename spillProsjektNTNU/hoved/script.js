@@ -114,9 +114,13 @@ function draw() {
   }
   if (keyIsDown(37)) {
     spiller.x -= 4;
+    spiller.stille = false;
+    spiller.motVenstre = true;
   }
   if (keyIsDown(39)) {
     spiller.x += 4;
+    spiller.stille = false;
+    spiller.motHoyre = true;
   }
 }
 function keyPressed() {
@@ -129,10 +133,29 @@ function keyPressed() {
     }
   } else if (keyCode === 38) {
     spiller.hopp();
+    spiller.armer = -20;
+    setTimeout(function () {
+      spiller.armer = 0;
+    }, 700);
   } else if (keyCode === 40) {
     spiller.ned();
+    spiller.armer = -20;
+    setTimeout(function () {
+      spiller.armer = 0;
+    }, 400);
   }
 }
+function keyReleased() {
+  if (keyCode === 37) {
+    spiller.stille = true;
+    spiller.motVenstre = false;
+  }
+  if (keyCode === 39) {
+    spiller.stille = true;
+    spiller.motHoyre = false;
+  }
+}
+
 function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }

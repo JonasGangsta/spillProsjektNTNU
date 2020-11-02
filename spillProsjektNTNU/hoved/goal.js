@@ -13,9 +13,12 @@ class Goal {
     this.mais = ` rgb(255, 255, 0)`;
   }
   tegn() {
+    //skygge som endrer farge
     drawingContext.shadowColor =
       "rgb(0," + Math.floor(Math.random() * 255) + ", 0 )";
     drawingContext.shadowBlur = 30;
+
+    //Kebab design.
     fill(this.farge);
     rect(this.x - 10, this.y - 10, 15, 30);
     fill(this.tortilla);
