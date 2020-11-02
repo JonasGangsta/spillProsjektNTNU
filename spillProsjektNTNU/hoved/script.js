@@ -140,28 +140,31 @@ let button = document.getElementById("innstillinger");
 let rules = document.getElementById("controls");
 let highscore = document.getElementById("leaderboard");
 button.onclick = function (event) {
-  document.getElementById("myDropdown").classList.toggle("show");
+  document.getElementById("meny").classList.toggle("show");
 };
 window.onclick = function (event) {
   if (!event.target.matches(".material-icons")) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
+    let nedmeny = document.getElementsByClassName("menyinnhold");
+    let i;
+    for (i = 0; i < nedmeny.length; i++) {
+      let openMeny = nedmeny[i];
+      if (openMeny.classList.contains("show")) {
+        openMeny.classList.remove("show");
       }
     }
   }
-  console.log(dropdowns);
 };
 function sjekkData() {
   let checkBox = document.getElementById("hideRules");
   if (checkBox.checked == false) {
     rules.style.display = "none";
     highscore.style.display = "none";
+    document.getElementById("title").style.display = "none";
+    document.getElementById("game").style.marginTop = "20%";
   } else {
     rules.style.display = "block";
     highscore.style.display = "block";
+    document.getElementById("title").style.display = "block";
+    document.getElementById("game").style.marginTop = "0%";
   }
 }

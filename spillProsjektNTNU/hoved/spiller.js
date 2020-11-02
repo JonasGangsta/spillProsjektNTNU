@@ -5,6 +5,7 @@ class Spiller {
     this.w = platform.w / 4;
     this.h = platform.h * 2;
     this.farge = `rgb(0,255,0)`;
+    this.svart = `black`;
     this.retning = 0;
     this.gravity = 0.2;
     this.gravitySpeed = 0;
@@ -12,7 +13,19 @@ class Spiller {
   tegn() {
     drawingContext.shadowColor = "green";
     fill(this.farge);
+    rect(this.x + 15, this.y, 10, 20);
+    rect(this.x - 6, this.y, 10, 20);
+
+    rect(this.x - 6, this.y, 10, 20);
     rect(this.x, this.y, this.w, this.h);
+    rect(this.x, this.y + 17, 10, 20);
+    rect(this.x + 10, this.y + 17, 9, 20);
+
+    ellipse(this.x + 10, this.y - 5, 20, 20);
+    fill(this.svart);
+    ellipse(this.x + 5, this.y - 5, 3, 3);
+    ellipse(this.x + 15, this.y - 5, 3, 3);
+    arc(this.x + 10, this.y - 2, 8, 8, 0, PI);
   }
   flytt() {
     let platformCollision =
