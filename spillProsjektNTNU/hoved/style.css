@@ -25,7 +25,7 @@ body {
   grid-gap: 4.7%;
 }
 #game {
-  background-color: black;
+  background-color: black !important;
 }
 #grid-container > div {
   text-align: center;
@@ -66,6 +66,7 @@ body {
   padding: 5%;
   margin-top: 40%;
   margin-bottom: 40%;
+  background-color: black;
 }
 
 #innstillinger {

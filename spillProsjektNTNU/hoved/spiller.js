@@ -31,12 +31,12 @@ class Spiller {
 
       //Kropp
       rect(this.x, this.y, this.w, this.h);
-
+      fill("blue");
       //Ben
       rect(this.x, this.y + 17, 10, 20);
       rect(this.x + 10, this.y + 17, 9, 20);
       //Hode
-
+      fill("#F1C27D");
       ellipse(this.x + 10, this.y - 5, 20, 20);
       fill(this.svart);
       //Øyne
@@ -44,6 +44,11 @@ class Spiller {
       ellipse(this.x + 15, this.y - 5, 3, 3);
       //Munn
       arc(this.x + 10, this.y - 2, 8, 8, 0, PI);
+      arc(this.x + 10, this.y - 10, 20, 20, PI, TWO_PI);
+
+      rect(this.x, this.y - 12, 20, 2);
+      fill("#F1C27D");
+      arc(this.x + 10, this.y - 12, 7, 5, PI, TWO_PI);
     } else if (this.motVenstre == true) {
       drawingContext.shadowColor = "green";
 
@@ -54,14 +59,16 @@ class Spiller {
       rect(this.x - 2, this.y + this.armer, 10, 20);
 
       //Kropp
-      rect(this.x, this.y, this.w, this.h);
+      rect(this.x, this.y, 15, this.h);
 
       //Ben
-      rect(this.x + 4, this.y + 17, 10, 20);
+      fill("blue");
+      rect(this.x + 0, this.y + 17, 10, 20);
       rect(this.x + 6, this.y + 17, 9, 20);
+      fill(this.farge);
       rect(this.x + 11, this.y + this.armer, 10, 20);
       //Hode
-
+      fill("#F1C27D");
       ellipse(this.x + 10, this.y - 5, 15, 20);
       fill(this.svart);
       //Øyne
@@ -70,6 +77,12 @@ class Spiller {
       ellipse(this.x + 4, this.y - 5, 2, 2);
       //Munn
       arc(this.x + 6, this.y - 2, 8, 8, 0, PI);
+      arc(this.x + 10, this.y - 10, 15, 20, PI, TWO_PI);
+
+      fill(this.svart);
+      rect(this.x + 3, this.y - 12, 23, 2);
+      fill("#F1C27D");
+      arc(this.x + 7, this.y - 12, 6, 4, PI, TWO_PI);
     } else if (this.motHoyre == true) {
       drawingContext.shadowColor = "green";
 
@@ -79,14 +92,17 @@ class Spiller {
 
       rect(this.x + 11, this.y + this.armer, 10, 20);
       //Kropp
-      rect(this.x, this.y, this.w, this.h);
+      rect(this.x, this.y, 15, this.h);
 
       //Ben
+      fill("blue");
       rect(this.x + 4, this.y + 17, 10, 20);
-      rect(this.x + 6, this.y + 17, 9, 20);
+      rect(this.x + 2, this.y + 17, 9, 20);
+
+      fill(this.farge);
       rect(this.x - 2, this.y + this.armer, 10, 20);
       //Hode
-
+      fill("#F1C27D");
       ellipse(this.x + 10, this.y - 5, 15, 20);
       fill(this.svart);
       //Øyne
@@ -96,6 +112,10 @@ class Spiller {
 
       //Munn
       arc(this.x + 13, this.y - 2, 8, 8, 0, PI);
+      arc(this.x + 10, this.y - 10, 15, 20, PI, TWO_PI);
+      rect(this.x - 4, this.y - 12, 23, 2);
+      fill("#F1C27D");
+      arc(this.x + 13, this.y - 12, 6, 4, PI, TWO_PI);
     }
   }
 

@@ -99,9 +99,9 @@ function draw() {
     fill(`Maroon`);
     textFont("VT323");
     textAlign(CENTER);
-    text(`YOU DIED`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
+    text(`DU DØDE`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
     text(
-      `CLICK ENTER TO RESTART`,
+      `TRYKK ENTER FOR RESTART`,
       windowWidth / 3.8,
       windowHeight / 3 + windowHeight / 10
     );
