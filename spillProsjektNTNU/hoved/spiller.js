@@ -47,10 +47,11 @@ class Spiller {
         this.w / 5,
         this.w / 5
       );
+
       //Munn
       arc(
         this.x + this.w / 2,
-        this.y - this.w / 5,
+        this.y - this.h / 15,
         this.w / 2,
         this.w / 2,
         0,
@@ -78,19 +79,19 @@ class Spiller {
       ellipse(this.x + this.w / 2, this.y - this.h / 6, this.w, this.w);
       fill(this.svart);
       //Øyne
-      ellipse(this.x + this.w / 4, this.y - this.h / 6, this.w / 5, this.w / 5);
+      ellipse(this.x + this.w / 8, this.y - this.h / 6, this.w / 7, this.w / 7);
       ellipse(
-        this.x + this.w / 2 + this.w / 4,
+        this.x + this.w / 8 + this.w / 4,
         this.y - this.h / 6,
         this.w / 5,
         this.w / 5
       );
       //Munn
       arc(
-        this.x + this.w / 2,
-        this.y - this.w / 5,
-        this.w / 2,
-        this.w / 2,
+        this.x + this.w / 6,
+        this.y - this.h / 15,
+        this.w / 2.5,
+        this.w / 2.5,
         0,
         PI
       );
@@ -116,19 +117,24 @@ class Spiller {
       ellipse(this.x + this.w / 2, this.y - this.h / 6, this.w, this.w);
       fill(this.svart);
       //Øyne
-      ellipse(this.x + this.w / 4, this.y - this.h / 6, this.w / 5, this.w / 5);
       ellipse(
-        this.x + this.w / 2 + this.w / 4,
+        this.x + this.w / 3 + this.w / 3,
         this.y - this.h / 6,
         this.w / 5,
         this.w / 5
       );
+      ellipse(
+        this.x + this.w - this.w / 10,
+        this.y - this.h / 6,
+        this.w / 7,
+        this.w / 7
+      );
       //Munn
       arc(
-        this.x + this.w / 2,
-        this.y - this.w / 5,
-        this.w / 2,
-        this.w / 2,
+        this.x + this.w / 2 + this.w / 4,
+        this.y - this.h / 15,
+        this.w / 2.5,
+        this.w / 2.5,
         0,
         PI
       );
