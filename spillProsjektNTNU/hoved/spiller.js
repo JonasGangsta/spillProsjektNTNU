@@ -25,97 +25,113 @@ class Spiller {
       fill(this.farge);
 
       //Armer
-      rect(this.x + 15, this.y + this.armer, 10, 20);
+      rect(this.x + this.w, this.y + this.armer, this.w / 3, this.h / 2);
 
-      rect(this.x - 6, this.y + this.armer, 10, 20);
+      rect(this.x - this.w / 3, this.y + this.armer, this.w / 4, this.h / 2);
 
       //Kropp
       rect(this.x, this.y, this.w, this.h);
       fill("blue");
       //Ben
-      rect(this.x, this.y + 17, 10, 20);
-      rect(this.x + 10, this.y + 17, 9, 20);
+      rect(this.x, this.y + this.h / 2, this.w / 2, this.h / 2);
+      rect(this.x + this.w / 2, this.y + this.h / 2, this.w / 2, this.h / 2);
       //Hode
       fill("#F1C27D");
-      ellipse(this.x + 10, this.y - 5, 20, 20);
+      ellipse(this.x + this.w / 2, this.y - this.h / 6, this.w, this.w);
       fill(this.svart);
       //Øyne
-      ellipse(this.x + 5, this.y - 5, 3, 3);
-      ellipse(this.x + 15, this.y - 5, 3, 3);
+      ellipse(this.x + this.w / 4, this.y - this.h / 6, this.w / 5, this.w / 5);
+      ellipse(
+        this.x + this.w / 2 + this.w / 4,
+        this.y - this.h / 6,
+        this.w / 5,
+        this.w / 5
+      );
       //Munn
-      arc(this.x + 10, this.y - 2, 8, 8, 0, PI);
-      arc(this.x + 10, this.y - 10, 20, 20, PI, TWO_PI);
-
-      rect(this.x, this.y - 12, 20, 2);
-      fill("#F1C27D");
-      arc(this.x + 10, this.y - 12, 7, 5, PI, TWO_PI);
+      arc(
+        this.x + this.w / 2,
+        this.y - this.w / 5,
+        this.w / 2,
+        this.w / 2,
+        0,
+        PI
+      );
     } else if (this.motVenstre == true) {
       drawingContext.shadowColor = "green";
 
       //Farge for figur
       fill(this.farge);
-      //Armer
 
-      rect(this.x - 2, this.y + this.armer, 10, 20);
+      //Armer
+      rect(this.x + this.w, this.y + this.armer, this.w / 3, this.h / 2);
+
+      rect(this.x - this.w / 3, this.y + this.armer, this.w / 4, this.h / 2);
 
       //Kropp
-      rect(this.x, this.y, 15, this.h);
-
-      //Ben
+      rect(this.x, this.y, this.w, this.h);
       fill("blue");
-      rect(this.x + 0, this.y + 17, 10, 20);
-      rect(this.x + 6, this.y + 17, 9, 20);
-      fill(this.farge);
-      rect(this.x + 11, this.y + this.armer, 10, 20);
+      //Ben
+      rect(this.x, this.y + this.h / 2, this.w / 2, this.h / 2);
+      rect(this.x + this.w / 2, this.y + this.h / 2, this.w / 2, this.h / 2);
       //Hode
       fill("#F1C27D");
-      ellipse(this.x + 10, this.y - 5, 15, 20);
+      ellipse(this.x + this.w / 2, this.y - this.h / 6, this.w, this.w);
       fill(this.svart);
       //Øyne
-
-      ellipse(this.x + 9, this.y - 5, 3, 3);
-      ellipse(this.x + 4, this.y - 5, 2, 2);
+      ellipse(this.x + this.w / 4, this.y - this.h / 6, this.w / 5, this.w / 5);
+      ellipse(
+        this.x + this.w / 2 + this.w / 4,
+        this.y - this.h / 6,
+        this.w / 5,
+        this.w / 5
+      );
       //Munn
-      arc(this.x + 6, this.y - 2, 8, 8, 0, PI);
-      arc(this.x + 10, this.y - 10, 15, 20, PI, TWO_PI);
-
-      fill(this.svart);
-      rect(this.x + 3, this.y - 12, 23, 2);
-      fill("#F1C27D");
-      arc(this.x + 7, this.y - 12, 6, 4, PI, TWO_PI);
+      arc(
+        this.x + this.w / 2,
+        this.y - this.w / 5,
+        this.w / 2,
+        this.w / 2,
+        0,
+        PI
+      );
     } else if (this.motHoyre == true) {
       drawingContext.shadowColor = "green";
 
       //Farge for figur
       fill(this.farge);
+
       //Armer
+      rect(this.x + this.w, this.y + this.armer, this.w / 3, this.h / 2);
 
-      rect(this.x + 11, this.y + this.armer, 10, 20);
+      rect(this.x - this.w / 3, this.y + this.armer, this.w / 4, this.h / 2);
+
       //Kropp
-      rect(this.x, this.y, 15, this.h);
-
-      //Ben
+      rect(this.x, this.y, this.w, this.h);
       fill("blue");
-      rect(this.x + 4, this.y + 17, 10, 20);
-      rect(this.x + 2, this.y + 17, 9, 20);
-
-      fill(this.farge);
-      rect(this.x - 2, this.y + this.armer, 10, 20);
+      //Ben
+      rect(this.x, this.y + this.h / 2, this.w / 2, this.h / 2);
+      rect(this.x + this.w / 2, this.y + this.h / 2, this.w / 2, this.h / 2);
       //Hode
       fill("#F1C27D");
-      ellipse(this.x + 10, this.y - 5, 15, 20);
+      ellipse(this.x + this.w / 2, this.y - this.h / 6, this.w, this.w);
       fill(this.svart);
       //Øyne
-
-      ellipse(this.x + 10, this.y - 5, 3, 3);
-      ellipse(this.x + 15, this.y - 5, 2, 2);
-
+      ellipse(this.x + this.w / 4, this.y - this.h / 6, this.w / 5, this.w / 5);
+      ellipse(
+        this.x + this.w / 2 + this.w / 4,
+        this.y - this.h / 6,
+        this.w / 5,
+        this.w / 5
+      );
       //Munn
-      arc(this.x + 13, this.y - 2, 8, 8, 0, PI);
-      arc(this.x + 10, this.y - 10, 15, 20, PI, TWO_PI);
-      rect(this.x - 4, this.y - 12, 23, 2);
-      fill("#F1C27D");
-      arc(this.x + 13, this.y - 12, 6, 4, PI, TWO_PI);
+      arc(
+        this.x + this.w / 2,
+        this.y - this.w / 5,
+        this.w / 2,
+        this.w / 2,
+        0,
+        PI
+      );
     }
   }
 
