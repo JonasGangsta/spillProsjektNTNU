@@ -27,7 +27,7 @@ class Spiller {
       //Armer
       rect(this.x + this.w, this.y + this.armer, this.w / 3, this.h / 2);
 
-      rect(this.x - this.w / 3, this.y + this.armer, this.w / 4, this.h / 2);
+      rect(this.x - this.w / 3, this.y + this.armer, this.w / 3, this.h / 2);
 
       //Kropp
       rect(this.x, this.y, this.w, this.h);
@@ -64,16 +64,31 @@ class Spiller {
       fill(this.farge);
 
       //Armer
-      rect(this.x + this.w, this.y + this.armer, this.w / 3, this.h / 2);
-
-      rect(this.x - this.w / 3, this.y + this.armer, this.w / 4, this.h / 2);
+      rect(
+        this.x - this.w / 4 + this.w / 6,
+        this.y + this.armer,
+        this.w / 4,
+        this.h / 2
+      );
 
       //Kropp
-      rect(this.x, this.y, this.w, this.h);
+      rect(this.x + this.w / 6, this.y, this.w - this.w / 4, this.h / 2);
+      rect(
+        this.x + this.w - this.w / 6,
+        this.y + this.armer,
+        this.w / 4,
+        this.h / 2
+      );
+
       fill("blue");
       //Ben
-      rect(this.x, this.y + this.h / 2, this.w / 2, this.h / 2);
-      rect(this.x + this.w / 2, this.y + this.h / 2, this.w / 2, this.h / 2);
+      rect(this.x + this.w / 6, this.y + this.h / 2, this.w / 2, this.h / 2);
+      rect(
+        this.x + this.w / 2 - this.w / 6,
+        this.y + this.h / 2,
+        this.w / 2,
+        this.h / 2
+      );
       //Hode
       fill("#F1C27D");
       ellipse(this.x + this.w / 2, this.y - this.h / 6, this.w, this.w);
@@ -88,7 +103,7 @@ class Spiller {
       );
       //Munn
       arc(
-        this.x + this.w / 6,
+        this.x + this.w / 4,
         this.y - this.h / 15,
         this.w / 2.5,
         this.w / 2.5,
@@ -102,16 +117,32 @@ class Spiller {
       fill(this.farge);
 
       //Armer
-      rect(this.x + this.w, this.y + this.armer, this.w / 3, this.h / 2);
-
-      rect(this.x - this.w / 3, this.y + this.armer, this.w / 4, this.h / 2);
+      rect(
+        this.x + this.w - this.w / 6,
+        this.y + this.armer,
+        this.w / 4,
+        this.h / 2
+      );
 
       //Kropp
-      rect(this.x, this.y, this.w, this.h);
+      rect(this.x + this.w / 6, this.y, this.w - this.w / 4, this.h / 2);
+
+      rect(
+        this.x - this.w / 4 + this.w / 6,
+        this.y + this.armer,
+        this.w / 4,
+        this.h / 2
+      );
       fill("blue");
       //Ben
-      rect(this.x, this.y + this.h / 2, this.w / 2, this.h / 2);
-      rect(this.x + this.w / 2, this.y + this.h / 2, this.w / 2, this.h / 2);
+      rect(
+        this.x + this.w / 2 - this.w / 6,
+        this.y + this.h / 2,
+        this.w / 2,
+        this.h / 2
+      );
+      rect(this.x + this.w / 6, this.y + this.h / 2, this.w / 2, this.h / 2);
+
       //Hode
       fill("#F1C27D");
       ellipse(this.x + this.w / 2, this.y - this.h / 6, this.w, this.w);
