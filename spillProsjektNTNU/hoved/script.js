@@ -8,6 +8,7 @@ let score = 0;
 let platformer = [];
 let hindere = [];
 let hinderTall = 5;
+
 function setup() {
   mode = 0;
   var canvas = createCanvas(windowWidth / 1.9, windowHeight / 1.5);
@@ -129,6 +130,7 @@ function keyPressed() {
       mode = 1;
       score = 0;
       hinderTall = 5;
+
       resetSketch();
     }
   } else if (keyCode === 38) {
@@ -180,14 +182,12 @@ window.onclick = function (event) {
 function sjekkData() {
   let checkBox = document.getElementById("hideRules");
   if (checkBox.checked == false) {
-    rules.style.display = "none";
-    highscore.style.display = "none";
-    document.getElementById("title").style.display = "none";
-    document.getElementById("game").style.marginTop = "20%";
+    rules.style.visibility = "hidden";
+    highscore.style.visibility = "hidden";
+    document.getElementById("title").style.visibility = "hidden";
   } else {
-    rules.style.display = "block";
-    highscore.style.display = "block";
-    document.getElementById("title").style.display = "block";
-    document.getElementById("game").style.marginTop = "0%";
+    rules.style.visibility = "visible";
+    highscore.style.visibility = "visible";
+    document.getElementById("title").style.visibility = "visible";
   }
 }

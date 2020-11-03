@@ -68,10 +68,23 @@ body {
   margin-bottom: 40%;
   background-color: black;
 }
-
+@media only screen and (max-width: 500px) {
+  #controls,
+  #leaderboard {
+    display: none;
+  }
+  #game {
+    margin-left: 35%;
+    margin-right: auto;
+  }
+}
 #innstillinger {
-  position: sticky;
-  right: 1270px;
+  z-index: 10;
+  pointer-events: all;
+  position: absolute;
+  font-size: 30px;
+
+  left: 0%;
   top: 10px;
   color: maroon;
   cursor: pointer;
@@ -81,6 +94,9 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+#innstillinger:hover {
+  color: red;
 }
 .menyinnhold {
   overflow: hidden;

@@ -15,7 +15,7 @@ class Hinder {
     fill(this.farge);
 
     triangle(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3);
-    stroke(255, 204, 0);
+    stroke(255, 255, 0);
     strokeWeight(0.5);
   }
 }
