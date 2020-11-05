@@ -194,7 +194,7 @@ class Spiller {
         mode = 2;
       }
     }
-    if (spiller.y > height + height / 10) {
+    if (spiller.y > height + height) {
       mode = 2;
     }
     if (
@@ -217,7 +217,7 @@ class Spiller {
   ned() {
     if (spiller.kollisjon()) {
       spiller.gravitySpeed = 2;
-      spiller.y += 11;
+      spiller.y += 16;
     }
   }
   kollisjon() {
@@ -225,7 +225,7 @@ class Spiller {
       if (
         platformer[i].x + platformer[i].w > spiller.x &&
         platformer[i].x < spiller.x + spiller.w &&
-        platformer[i].y + 10 > spiller.y + spiller.h - 1 &&
+        platformer[i].y + 15 > spiller.y + spiller.h - 1 &&
         platformer[i].y < spiller.y + spiller.h
       ) {
         this.gravitySpeed = 0;
