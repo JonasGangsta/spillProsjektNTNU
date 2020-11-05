@@ -9,6 +9,12 @@ let platformer = [];
 let hindere = [];
 let hinderTall = 5;
 
+if (!localStorage.getItem("highscore")) {
+  populateStorage();
+} else {
+  setScore();
+}
+
 function setup() {
   mode = 0;
   var canvas = createCanvas(windowWidth / 1.9, windowHeight / 1.5);
