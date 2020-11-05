@@ -8,7 +8,7 @@ let score = 0;
 let platformer = [];
 let hindere = [];
 let hinderTall = 5;
-
+oppdaterStatus();
 function setup() {
   mode = 0;
   var canvas = createCanvas(windowWidth / 1.9, windowHeight / 1.5);
@@ -92,28 +92,44 @@ function draw() {
   if (mode == 2) {
     background(0);
     UpdateScore();
+    oppdaterStatus();
     drawingContext.shadowOffsetX = -2.5;
     drawingContext.shadowOffsetY = 2.5;
     drawingContext.shadowBlur = 3;
     drawingContext.shadowColor = "red";
     textSize(windowWidth / 20);
     background(0);
-    fill(`Maroon`);
+
     textFont("VT323");
     textAlign(CENTER);
-    text(`DU DØDE`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
+    fill(`Maroon`);
+    if (spiller.y > height + height) {
+      text(
+        `DU FALT TIL DØDEN!`,
+        windowWidth / 3.8,
+        windowHeight / 3 - windowHeight / 10
+      );
+    } else {
+      text(`DU DØDE!`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
+    }
+    fill(`Maroon`);
+    textSize(windowWidth / 22);
     text(
-      `TRYKK ENTER FOR RESTART`,
+      `TRYKK ENTER FOR Å RESTARTE`,
       windowWidth / 3.8,
       windowHeight / 3 + windowHeight / 10
     );
+
     fill(`green`);
+
+    textSize(windowWidth / 20);
     drawingContext.shadowColor = `lightGreen`;
     if (frameCount % 160 < 90) {
       text(`SCORE: ${score}`, windowWidth / 3.8, windowHeight / 3);
     } else {
     }
   }
+
   if (keyIsDown(37)) {
     spiller.x -= 4;
     spiller.stille = false;
@@ -127,7 +143,8 @@ function draw() {
 }
 function keyPressed() {
   if (keyCode === ENTER) {
-    if (mode == 2 || mode == 0) {
+    oppdaterStatus();
+    if (mode == 2 || mode == 3 || mode == 0) {
       mode = 1;
       score = 0;
       hinderTall = 5;
@@ -174,7 +191,24 @@ function UpdateScore() {
     );
   }
 }
-
+function oppdaterStatus() {
+  if (localStorage.getItem("highscore") < 10) {
+    scoreStatus = "Nybegynner";
+  }
+  if (localStorage.getItem("highscore") >= 10) {
+    scoreStatus = "Flink";
+  }
+  if (localStorage.getItem("highscore") >= 20) {
+    scoreStatus = "Gærn";
+  }
+  if (localStorage.getItem("highscore") >= 30) {
+    scoreStatus = "G ";
+  }
+  if (localStorage.getItem("highscore") >= 40) {
+    scoreStatus = "Best";
+  }
+  document.getElementById("status").innerHTML = "Status: " + scoreStatus;
+}
 function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }
