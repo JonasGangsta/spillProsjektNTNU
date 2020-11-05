@@ -177,7 +177,7 @@ let button = document.getElementById("innstillinger");
 let rules = document.getElementById("controls");
 let highscore = document.getElementById("leaderboard");
 let infoKnapper = document.getElementById("knapp-container");
-let tittelNattmat = document.getElementById("title");
+
 button.onclick = function (event) {
   document.getElementById("meny").classList.toggle("show");
 };
