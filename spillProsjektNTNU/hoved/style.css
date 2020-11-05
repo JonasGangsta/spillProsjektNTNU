@@ -68,11 +68,33 @@ body {
   font-size: 250%;
   color: red;
   text-shadow: -1px 1px maroon;
+  text-decoration: underline;
 }
 #controls > p,
 #leaderboard > p {
   font-size: 150%;
-  color: yellow;
+  color: red;
+}
+#controls > h1,
+#leaderboard > h1 {
+  text-shadow: -2px 1px maroon;
+}
+
+span {
+  text-decoration: underline;
+
+  color: red;
+}
+
+#leaderboard > #dinHigh {
+  font-size: 500%;
+  margin-top: 10%;
+  position: relativ;
+  color: #adff2f;
+  height: 5%;
+}
+#leaderboard > p {
+  color: #adff2f;
 }
 #controls,
 #leaderboard {
@@ -81,7 +103,7 @@ body {
   margin-bottom: 40%;
   background-color: black;
 }
-#knapp-container>p {
+#knapp-container > p {
   margin: 10%;
   text-shadow: 0px 0.5px red;
 }
@@ -90,9 +112,18 @@ body {
   #leaderboard {
     display: none;
   }
+
   #game {
     margin-left: 35%;
     margin-right: auto;
+  }
+  #knapp-container {
+    display: none;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #title {
+    visibility: hidden;
   }
 }
 #innstillinger {
@@ -105,12 +136,15 @@ body {
   top: 10px;
   color: red;
   cursor: pointer;
+  /*Avgrensning for bruker & fjerning av selectering av tekst*/
+  -moz-user-select: none;
+  -ms-user-select: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
+  overflow-y: hidden; /* Gjem scrollbar */
+  overflow-x: hidden; /* Gjem scrollbar*/
 }
 #innstillinger:hover {
   color: maroon;
@@ -127,12 +161,16 @@ body {
   overflow: auto;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
+  /*Avgrensning for bruker & fjerning av selectering av tekst*/
+  -moz-user-select: none;
+  -ms-user-select: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+
   user-select: none;
+  overflow-y: hidden; /* Gjem scrollbar */
+  overflow-x: hidden; /* Gjem scrollbar*/
 }
 
 .show {
@@ -146,4 +184,6 @@ body {
   left: 15px;
   top: 5px;
   position: relative;
+  overflow-y: hidden; /* Gjem scrollbar */
+  overflow-x: hidden; /* Gjem scrollbar*/
 }

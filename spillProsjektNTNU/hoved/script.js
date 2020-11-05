@@ -8,12 +8,8 @@ let score = 0;
 let platformer = [];
 let hindere = [];
 let hinderTall = 5;
-
-if (!localStorage.getItem("highscore")) {
-  populateStorage();
-} else {
-  setScore();
-}
+let highscoreTall = localStorage.getItem("highscoreTall");
+let visScore = (document.getElementById("dinHigh").innerHTML = highscoreTall);
 
 function setup() {
   mode = 0;
@@ -97,6 +93,7 @@ function draw() {
   }
   if (mode == 2) {
     background(0);
+    UpdateScore();
     drawingContext.shadowOffsetX = -2.5;
     drawingContext.shadowOffsetY = 2.5;
     drawingContext.shadowBlur = 3;
@@ -163,6 +160,15 @@ function keyReleased() {
     spiller.motHoyre = false;
   }
 }
+function UpdateScore() {
+  if (score > highscoreTall) {
+    localStorage.setItem("highscoreTall", score);
+    visScore = document.getElementById("dinHigh").innerHTML = score;
+  } else {
+    localStorage.setItem("highscoreTall", score);
+    visScore = document.getElementById("dinHigh").innerHTML = highscoreTall;
+  }
+}
 
 function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
@@ -170,6 +176,8 @@ function windowResized() {
 let button = document.getElementById("innstillinger");
 let rules = document.getElementById("controls");
 let highscore = document.getElementById("leaderboard");
+let infoKnapper = document.getElementById("knapp-container");
+let tittelNattmat = document.getElementById("title");
 button.onclick = function (event) {
   document.getElementById("meny").classList.toggle("show");
 };
@@ -190,10 +198,12 @@ function sjekkData() {
   if (checkBox.checked == false) {
     rules.style.visibility = "hidden";
     highscore.style.visibility = "hidden";
-    document.getElementById("title").style.visibility = "hidden";
+
+    infoKnapper.style.visibility = "hidden";
   } else {
     rules.style.visibility = "visible";
     highscore.style.visibility = "visible";
-    document.getElementById("title").style.visibility = "visible";
+
+    infoKnapper.style.visibility = "visible";
   }
 }
