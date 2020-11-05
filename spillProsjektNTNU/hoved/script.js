@@ -8,8 +8,6 @@ let score = 0;
 let platformer = [];
 let hindere = [];
 let hinderTall = 5;
-let highscoreTall = localStorage.getItem("highscoreTall");
-let visScore = (document.getElementById("dinHigh").innerHTML = highscoreTall);
 
 function setup() {
   mode = 0;
@@ -160,13 +158,20 @@ function keyReleased() {
     spiller.motHoyre = false;
   }
 }
+document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
+  "highscore",
+  score
+);
+
 function UpdateScore() {
-  if (score > highscoreTall) {
-    localStorage.setItem("highscoreTall", score);
-    visScore = document.getElementById("dinHigh").innerHTML = score;
+  if (score > localStorage.getItem("highscore")) {
+    localStorage.setItem("highscore", score);
+    document.getElementById("dinHighscore").innerHTML = score;
   } else {
-    localStorage.setItem("highscoreTall", score);
-    visScore = document.getElementById("dinHigh").innerHTML = highscoreTall;
+    document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
+      "highscore",
+      score
+    );
   }
 }
 
@@ -175,7 +180,7 @@ function windowResized() {
 }
 let button = document.getElementById("innstillinger");
 let rules = document.getElementById("controls");
-let highscore = document.getElementById("leaderboard");
+let highscoreInfo = document.getElementById("leaderboard");
 let infoKnapper = document.getElementById("knapp-container");
 
 button.onclick = function (event) {
@@ -197,12 +202,12 @@ function sjekkData() {
   let checkBox = document.getElementById("hideRules");
   if (checkBox.checked == false) {
     rules.style.visibility = "hidden";
-    highscore.style.visibility = "hidden";
+    highscoreInfo.style.visibility = "hidden";
 
     infoKnapper.style.visibility = "hidden";
   } else {
     rules.style.visibility = "visible";
-    highscore.style.visibility = "visible";
+    highscoreInfo.style.visibility = "visible";
 
     infoKnapper.style.visibility = "visible";
   }
