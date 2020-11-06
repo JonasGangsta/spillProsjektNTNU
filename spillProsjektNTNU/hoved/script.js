@@ -182,7 +182,9 @@ function UpdateScore() {
   if (score > localStorage.getItem("highscore")) {
     localStorage.setItem("highscore", score);
     document.getElementById("dinHighscore").innerHTML = score;
-    document.getElementById("status").innerHTML = "Velg farge:";
+    if (score >= 20) {
+      document.getElementById("status").innerHTML = "Velg farge:";
+    }
   } else {
     document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
       "highscore",
