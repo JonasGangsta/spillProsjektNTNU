@@ -8,7 +8,6 @@ let score = 0;
 let platformer = [];
 let hindere = [];
 let hinderTall = 5;
-oppdaterStatus();
 function setup() {
   mode = 0;
   var canvas = createCanvas(windowWidth / 1.9, windowHeight / 1.5);
@@ -92,7 +91,7 @@ function draw() {
   if (mode == 2) {
     background(0);
     UpdateScore();
-    oppdaterStatus();
+
     drawingContext.shadowOffsetX = -2.5;
     drawingContext.shadowOffsetY = 2.5;
     drawingContext.shadowBlur = 3;
@@ -143,7 +142,6 @@ function draw() {
 }
 function keyPressed() {
   if (keyCode === ENTER) {
-    oppdaterStatus();
     if (mode == 2 || mode == 3 || mode == 0) {
       mode = 1;
       score = 0;
@@ -184,6 +182,7 @@ function UpdateScore() {
   if (score > localStorage.getItem("highscore")) {
     localStorage.setItem("highscore", score);
     document.getElementById("dinHighscore").innerHTML = score;
+    document.getElementById("status").innerHTML = "Velg farge:";
   } else {
     document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
       "highscore",
@@ -191,24 +190,7 @@ function UpdateScore() {
     );
   }
 }
-function oppdaterStatus() {
-  if (localStorage.getItem("highscore") < 10) {
-    scoreStatus = "Nybegynner";
-  }
-  if (localStorage.getItem("highscore") >= 10) {
-    scoreStatus = "Flink";
-  }
-  if (localStorage.getItem("highscore") >= 20) {
-    scoreStatus = "Gærn";
-  }
-  if (localStorage.getItem("highscore") >= 30) {
-    scoreStatus = "G ";
-  }
-  if (localStorage.getItem("highscore") >= 40) {
-    scoreStatus = "Best";
-  }
-  document.getElementById("status").innerHTML = "Status: " + scoreStatus;
-}
+
 function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }
@@ -247,7 +229,14 @@ function sjekkData() {
   }
 }
 
+if (localStorage.getItem("highscore") >= 20) {
+  document.getElementById("status").innerHTML = "Velg farge:";
+} else {
+  document.getElementById("status").innerHTML =
+    "Få en highscore på 20+ for å låse opp fargevalg!";
+}
 //Custom colors
+
 let colorselected = "rgb(0,255,0)";
 let greenSelect = document.getElementById("green");
 let redSelect = document.getElementById("red");
@@ -256,54 +245,79 @@ let yellowSelect = document.getElementById("yellow");
 let rainbowSelect = document.getElementById("rainbow");
 
 greenSelect.onclick = () => {
-  colorselected = `rgb(0,255,0)`;
-  spiller.farge = "rgb(0,255,0)";
-  spiller.rainbowEffect = false;
-  greenSelect.style.border = "2px solid white";
-  redSelect.style.borderStyle = "none";
-  blueSelect.style.borderStyle = "none";
-  yellowSelect.style.borderStyle = "none";
-  rainbowSelect.style.borderStyle = "none";
+  if (localStorage.getItem("highscore") >= 20) {
+    colorselected = `rgb(0,255,0)`;
+    spiller.farge = "rgb(0,255,0)";
+    spiller.rainbowEffect = false;
+    greenSelect.style.border = "2px solid white";
+    redSelect.style.borderStyle = "none";
+    blueSelect.style.borderStyle = "none";
+    yellowSelect.style.borderStyle = "none";
+    rainbowSelect.style.borderStyle = "none";
+  } else {
+    colorselected = `rgb(0,255,0)`;
+    spiller.farge = "rgb(0,255,0)";
+  }
 };
 redSelect.onclick = () => {
-  colorselected = `red`;
-  spiller.farge = "red";
-  spiller.rainbowEffect = false;
-  redSelect.style.border = "2px solid white";
-  greenSelect.style.borderStyle = "none";
-  blueSelect.style.borderStyle = "none";
-  yellowSelect.style.borderStyle = "none";
-  rainbowSelect.style.borderStyle = "none";
+  if (localStorage.getItem("highscore") >= 20) {
+    colorselected = `red`;
+    spiller.farge = "red";
+    spiller.rainbowEffect = false;
+    redSelect.style.border = "2px solid white";
+    greenSelect.style.borderStyle = "none";
+    blueSelect.style.borderStyle = "none";
+    yellowSelect.style.borderStyle = "none";
+    rainbowSelect.style.borderStyle = "none";
+  } else {
+    colorselected = `rgb(0,255,0)`;
+    spiller.farge = "rgb(0,255,0)";
+  }
 };
-blueSelect.onclick = () => {
-  colorselected = `blue`;
-  spiller.farge = "blue";
-  spiller.rainbowEffect = false;
 
-  blueSelect.style.border = "2px solid white";
-  greenSelect.style.borderStyle = "none";
-  redSelect.style.borderStyle = "none";
-  yellowSelect.style.borderStyle = "none";
-  rainbowSelect.style.borderStyle = "none";
+blueSelect.onclick = () => {
+  if (localStorage.getItem("highscore") >= 20) {
+    colorselected = `blue`;
+    spiller.farge = "blue";
+    spiller.rainbowEffect = false;
+
+    blueSelect.style.border = "2px solid white";
+    greenSelect.style.borderStyle = "none";
+    redSelect.style.borderStyle = "none";
+    yellowSelect.style.borderStyle = "none";
+    rainbowSelect.style.borderStyle = "none";
+  } else {
+    colorselected = `green`;
+    spiller.farge = "green";
+  }
 };
 yellowSelect.onclick = () => {
-  colorselected = `yellow`;
-  spiller.farge = "yellow";
-  spiller.rainbowEffect = false;
+  if (localStorage.getItem("highscore") >= 20) {
+    colorselected = `yellow`;
+    spiller.farge = "yellow";
+    spiller.rainbowEffect = false;
 
-  yellowSelect.style.border = "2px solid white";
-  redSelect.style.borderStyle = "none";
-  blueSelect.style.borderStyle = "none";
-  greenSelect.style.borderStyle = "none";
-  rainbowSelect.style.borderStyle = "none";
+    yellowSelect.style.border = "2px solid white";
+    redSelect.style.borderStyle = "none";
+    blueSelect.style.borderStyle = "none";
+    greenSelect.style.borderStyle = "none";
+    rainbowSelect.style.borderStyle = "none";
+  } else {
+    colorselected = `green`;
+    spiller.farge = "green";
+  }
 };
 
 rainbowSelect.onclick = () => {
-  colorselected = true;
+  if (localStorage.getItem("highscore") >= 20) {
+    colorselected = true;
 
-  rainbowSelect.style.border = "2px solid white";
-  redSelect.style.borderStyle = "none";
-  blueSelect.style.borderStyle = "none";
-  greenSelect.style.borderStyle = "none";
-  yellowSelect.style.borderStyle = "none";
+    rainbowSelect.style.border = "2px solid white";
+    redSelect.style.borderStyle = "none";
+    blueSelect.style.borderStyle = "none";
+    greenSelect.style.borderStyle = "none";
+    yellowSelect.style.borderStyle = "none";
+  } else {
+    let colorselected = "rgb(0,255,0)";
+  }
 };

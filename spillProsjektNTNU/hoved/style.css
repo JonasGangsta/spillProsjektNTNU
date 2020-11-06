@@ -1,3 +1,7 @@
+html,
+body {
+  overflow: hidden;
+}
 * {
   color: maroon;
   font-family: vt323;
@@ -112,6 +116,7 @@ span {
   border-radius: 50%;
   display: inline-block;
 }
+
 #green {
   background-color: green;
 }
