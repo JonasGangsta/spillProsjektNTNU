@@ -28,7 +28,7 @@ body {
 #kebabBilde {
   width: 100px;
   /* padding: 20px; */
-  margin: 40px;
+  margin: 20px;
 }
 #burgerBilde {
   width: 100px;
@@ -41,6 +41,7 @@ body {
   justify-content: center;
   width: 100%;
   /* height: 100%; */
+  margin-bottom: 15px;
 }
 #knapp-container {
   display: grid;
@@ -172,6 +173,10 @@ span {
   position: relativ;
   color: #adff2f;
   height: 5%;
+  margin-bottom: 15%;
+}
+#status {
+  padding: 5%;
 }
 #leaderboard > p {
   color: #adff2f;
