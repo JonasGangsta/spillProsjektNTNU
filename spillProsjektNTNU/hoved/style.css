@@ -73,6 +73,7 @@ body {
 .btnContainer > div {
   display: block;
   width: auto;
+  height: auto;
   margin-top: 3%;
   padding: 3%;
   font-size: 800%;
@@ -81,26 +82,17 @@ body {
 .knappHover > p {
   text-align: center;
 }
-.btnContainer {
-  height: 45vh;
-  min-height: 45vh;
-  margin-top: 10vh;
-}
 #controls > h1,
 #leaderboard > h1 {
   font-size: 250%;
   color: red;
-  text-shadow: -1px 1px maroon;
   text-decoration: underline;
+  text-shadow: -1px 1px maroon;
 }
 #controls > p,
 #leaderboard > p {
   font-size: 150%;
   color: red;
-}
-#controls > h1,
-#leaderboard > h1 {
-  text-shadow: -2px 1px maroon;
 }
 
 span {
