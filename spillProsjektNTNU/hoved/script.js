@@ -128,13 +128,12 @@ function draw() {
     } else {
     }
   }
-
-  if (keyIsDown(37)) {
+  if (keyIsDown(37) || keyIsDown(65)) {
     spiller.x -= 4;
     spiller.stille = false;
     spiller.motVenstre = true;
   }
-  if (keyIsDown(39)) {
+  if (keyIsDown(39) || keyIsDown(68)) {
     spiller.x += 4;
     spiller.stille = false;
     spiller.motHoyre = true;
@@ -149,13 +148,13 @@ function keyPressed() {
 
       resetSketch();
     }
-  } else if (keyCode === 38) {
+  } else if (keyCode === 38 || keyCode === 87) {
     spiller.hopp();
     spiller.armer = -15;
     setTimeout(function () {
       spiller.armer = 0;
     }, 700);
-  } else if (keyCode === 40) {
+  } else if (keyCode === 40 || keyCode === 83) {
     spiller.ned();
     spiller.armer = -15;
     setTimeout(function () {
@@ -164,11 +163,11 @@ function keyPressed() {
   }
 }
 function keyReleased() {
-  if (keyCode === 37) {
+  if (keyCode === 37 || keyCode === 65) {
     spiller.stille = true;
     spiller.motVenstre = false;
   }
-  if (keyCode === 39) {
+  if (keyCode === 39 || keyCode === 68) {
     spiller.stille = true;
     spiller.motHoyre = false;
   }
@@ -289,8 +288,8 @@ blueSelect.onclick = () => {
     yellowSelect.style.borderStyle = "none";
     rainbowSelect.style.borderStyle = "none";
   } else {
-    colorselected = `green`;
-    spiller.farge = "green";
+    colorselected = `rgb(0,255,0)`;
+    spiller.farge = "rgb(0,255,0)";
   }
 };
 yellowSelect.onclick = () => {
@@ -305,13 +304,13 @@ yellowSelect.onclick = () => {
     greenSelect.style.borderStyle = "none";
     rainbowSelect.style.borderStyle = "none";
   } else {
-    colorselected = `green`;
-    spiller.farge = "green";
+    colorselected = `rgb(0,255,0)`;
+    spiller.farge = "rgb(0,255,0)";
   }
 };
 
 rainbowSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 20) {
+  if (localStorage.getItem("highscore") >= 30) {
     colorselected = true;
 
     rainbowSelect.style.border = "2px solid white";
@@ -321,5 +320,12 @@ rainbowSelect.onclick = () => {
     yellowSelect.style.borderStyle = "none";
   } else {
     let colorselected = "rgb(0,255,0)";
+    document.getElementById("status").innerHTML =
+      "Du trenger 30+ for regnbuefarge :)";
+    setTimeout(function () {
+      if (localStorage.getItem("highscore") >= 20) {
+        document.getElementById("status").innerHTML = "Velg farge:";
+      } else document.getElementById("status").innerHTML = "Få en highscore på 20+ for å låse opp fargevalg!";
+    }, 2000);
   }
 };
