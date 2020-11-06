@@ -203,6 +203,20 @@ span {
     visibility: hidden;
   }
 }
+@media only screen and (max-height: 800px) {
+  #controls > h1,
+  #leaderboard > h1 {
+    font-size: 150%;
+    color: red;
+    text-decoration: underline;
+    text-shadow: -1px 1px maroon;
+  }
+  #controls > p,
+  #leaderboard > p {
+    font-size: 100%;
+    color: red;
+  }
+}
 #innstillinger {
   z-index: 10;
   pointer-events: all;
