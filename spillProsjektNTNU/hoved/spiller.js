@@ -211,7 +211,7 @@ class Spiller {
     }
     if (
       goal.x + goal.r > spiller.x &&
-      goal.y + goal.r > spiller.y &&
+      goal.y + goal.r > spiller.y - spiller.h/6 &&
       goal.x - goal.r < spiller.x + spiller.w &&
       goal.y - goal.r < spiller.y + spiller.h
     ) {
