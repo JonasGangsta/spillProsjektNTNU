@@ -4,7 +4,7 @@ class Spiller {
     this.y = platform.y - platform.h * 2;
     this.w = platform.w / 4;
     this.h = platform.h * 2;
-    this.farge = 0;
+    this.farge = colorselected;
     this.svart = `black`;
     this.retning = 0;
     this.gravity = 0.2;

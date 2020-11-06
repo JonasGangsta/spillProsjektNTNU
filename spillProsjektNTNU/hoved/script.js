@@ -248,7 +248,7 @@ function sjekkData() {
 }
 
 //Custom colors
-
+let colorselected = "rgb(0,255,0)";
 let greenSelect = document.getElementById("green");
 let redSelect = document.getElementById("red");
 let blueSelect = document.getElementById("blue");
@@ -256,7 +256,8 @@ let yellowSelect = document.getElementById("yellow");
 let rainbowSelect = document.getElementById("rainbow");
 
 greenSelect.onclick = () => {
-  spiller.farge = `rgb(0,255,0)`;
+  colorselected = `rgb(0,255,0)`;
+  spiller.farge = "rgb(0,255,0)";
   spiller.rainbowEffect = false;
   greenSelect.style.border = "2px solid white";
   redSelect.style.borderStyle = "none";
@@ -265,7 +266,8 @@ greenSelect.onclick = () => {
   rainbowSelect.style.borderStyle = "none";
 };
 redSelect.onclick = () => {
-  spiller.farge = `red`;
+  colorselected = `red`;
+  spiller.farge = "red";
   spiller.rainbowEffect = false;
   redSelect.style.border = "2px solid white";
   greenSelect.style.borderStyle = "none";
@@ -274,7 +276,8 @@ redSelect.onclick = () => {
   rainbowSelect.style.borderStyle = "none";
 };
 blueSelect.onclick = () => {
-  spiller.farge = `blue`;
+  colorselected = `blue`;
+  spiller.farge = "blue";
   spiller.rainbowEffect = false;
 
   blueSelect.style.border = "2px solid white";
@@ -284,7 +287,8 @@ blueSelect.onclick = () => {
   rainbowSelect.style.borderStyle = "none";
 };
 yellowSelect.onclick = () => {
-  spiller.farge = `yellow`;
+  colorselected = `yellow`;
+  spiller.farge = "yellow";
   spiller.rainbowEffect = false;
 
   yellowSelect.style.border = "2px solid white";
