@@ -299,7 +299,7 @@ yellowSelect.onclick = () => {
 };
 
 rainbowSelect.onclick = () => {
-  spiller.rainbowEffect = true;
+  colorselected = true;
 
   rainbowSelect.style.border = "2px solid white";
   redSelect.style.borderStyle = "none";

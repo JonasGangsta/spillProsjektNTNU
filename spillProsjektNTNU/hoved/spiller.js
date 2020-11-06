@@ -14,11 +14,10 @@ class Spiller {
     this.motVenstre = false;
     this.motHoyre = false;
     this.teste = "#0b6301";
-    this.rainbowEffect = false;
   }
 
   tegn() {
-    if (this.rainbowEffect == true) {
+    if (colorselected == true) {
       this.farge =
         "rgb(" +
         Math.floor(Math.random() * 255) +
