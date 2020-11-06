@@ -239,6 +239,7 @@ if (localStorage.getItem("highscore") >= 20) {
 //Custom colors
 
 let colorselected = "rgb(0,255,0)";
+let regnbueModus = false;
 let greenSelect = document.getElementById("green");
 let redSelect = document.getElementById("red");
 let blueSelect = document.getElementById("blue");
@@ -249,7 +250,7 @@ greenSelect.onclick = () => {
   if (localStorage.getItem("highscore") >= 20) {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    spiller.rainbowEffect = false;
+
     greenSelect.style.border = "2px solid white";
     redSelect.style.borderStyle = "none";
     blueSelect.style.borderStyle = "none";
@@ -264,7 +265,7 @@ redSelect.onclick = () => {
   if (localStorage.getItem("highscore") >= 20) {
     colorselected = `red`;
     spiller.farge = "red";
-    spiller.rainbowEffect = false;
+
     redSelect.style.border = "2px solid white";
     greenSelect.style.borderStyle = "none";
     blueSelect.style.borderStyle = "none";
@@ -280,7 +281,6 @@ blueSelect.onclick = () => {
   if (localStorage.getItem("highscore") >= 20) {
     colorselected = `blue`;
     spiller.farge = "blue";
-    spiller.rainbowEffect = false;
 
     blueSelect.style.border = "2px solid white";
     greenSelect.style.borderStyle = "none";
@@ -296,7 +296,6 @@ yellowSelect.onclick = () => {
   if (localStorage.getItem("highscore") >= 20) {
     colorselected = `yellow`;
     spiller.farge = "yellow";
-    spiller.rainbowEffect = false;
 
     yellowSelect.style.border = "2px solid white";
     redSelect.style.borderStyle = "none";
@@ -311,7 +310,7 @@ yellowSelect.onclick = () => {
 
 rainbowSelect.onclick = () => {
   if (localStorage.getItem("highscore") >= 30) {
-    colorselected = true;
+    regnbueModus = true;
 
     rainbowSelect.style.border = "2px solid white";
     redSelect.style.borderStyle = "none";

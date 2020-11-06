@@ -13,19 +13,16 @@ class Spiller {
     this.stille = true;
     this.motVenstre = false;
     this.motHoyre = false;
-    this.teste = "#0b6301";
+    this.randomColor = 0;
   }
 
   tegn() {
-    if (colorselected == true) {
-      this.farge =
-        "rgb(" +
-        Math.floor(Math.random() * 255) +
-        "," +
-        Math.floor(Math.random() * 255) +
-        ", " +
-        Math.floor(Math.random() * 255) +
-        " )";
+    if (regnbueModus === true) {
+      if (frameCount % 20 < 1) {
+        this.randomColor =
+          "rgb(" + random(255) + ", " + random(255) + ", " + random(255) + ")";
+      }
+      this.farge = this.randomColor;
     }
     //skygge
     if (this.stille == true) {
@@ -198,10 +195,12 @@ class Spiller {
     }
     for (let i = 0; i < hindere.length; i++) {
       if (
-        hindere[i].x2 - (hindere[i].x2 - hindere[i].x1)*0.06 > spiller.x &&
-        hindere[i].x1 + (hindere[i].x2 - hindere[i].x1)*0.06 < spiller.x + spiller.w &&
+        hindere[i].x2 - (hindere[i].x2 - hindere[i].x1) * 0.06 > spiller.x &&
+        hindere[i].x1 + (hindere[i].x2 - hindere[i].x1) * 0.06 <
+          spiller.x + spiller.w &&
         hindere[i].y1 > spiller.y &&
-        hindere[i].y3 + (hindere[i].x2 - hindere[i].x1)*0.2 < spiller.y + spiller.h
+        hindere[i].y3 + (hindere[i].x2 - hindere[i].x1) * 0.2 <
+          spiller.y + spiller.h
       ) {
         mode = 2;
       }
@@ -211,7 +210,7 @@ class Spiller {
     }
     if (
       goal.x + goal.r > spiller.x &&
-      goal.y + goal.r > spiller.y - spiller.h/6 &&
+      goal.y + goal.r > spiller.y - spiller.h / 6 &&
       goal.x - goal.r < spiller.x + spiller.w &&
       goal.y - goal.r < spiller.y + spiller.h
     ) {
@@ -222,8 +221,8 @@ class Spiller {
   }
   hopp() {
     if (spiller.kollisjon()) {
-      spiller.gravitySpeed = - spiller.h/6.14;
-      spiller.y = spiller.y - spiller.h/2.1;
+      spiller.gravitySpeed = -spiller.h / 6.14;
+      spiller.y = spiller.y - spiller.h / 2.1;
     }
   }
   ned() {
