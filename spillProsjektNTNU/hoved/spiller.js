@@ -192,16 +192,16 @@ class Spiller {
       this.y += this.gravitySpeed;
     }
     if (this.x < 0) {
-      this.x += 5;
-    } else if (this.x > width - this.w) {
-      this.x -= 5;
+      this.x = width;
+    } else if (this.x > width) {
+      this.x = 0;
     }
     for (let i = 0; i < hindere.length; i++) {
       if (
-        hindere[i].x2 - 7 > spiller.x &&
-        hindere[i].x1 + 7 < spiller.x + spiller.w &&
+        hindere[i].x2 - (hindere[i].x2 - hindere[i].x1)*0.06 > spiller.x &&
+        hindere[i].x1 + (hindere[i].x2 - hindere[i].x1)*0.06 < spiller.x + spiller.w &&
         hindere[i].y1 > spiller.y &&
-        hindere[i].y3 + 25 < spiller.y + spiller.h
+        hindere[i].y3 + (hindere[i].x2 - hindere[i].x1)*0.2 < spiller.y + spiller.h
       ) {
         mode = 2;
       }
@@ -222,8 +222,8 @@ class Spiller {
   }
   hopp() {
     if (spiller.kollisjon()) {
-      spiller.gravitySpeed = -7;
-      spiller.y = spiller.y - 20;
+      spiller.gravitySpeed = - spiller.h/6.14;
+      spiller.y = spiller.y - spiller.h/2.1;
     }
   }
   ned() {
