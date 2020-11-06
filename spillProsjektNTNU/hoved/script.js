@@ -246,3 +246,60 @@ function sjekkData() {
     infoKnapper.style.visibility = "visible";
   }
 }
+
+//Custom colors
+
+let greenSelect = document.getElementById("green");
+let redSelect = document.getElementById("red");
+let blueSelect = document.getElementById("blue");
+let yellowSelect = document.getElementById("yellow");
+let rainbowSelect = document.getElementById("rainbow");
+
+greenSelect.onclick = () => {
+  spiller.farge = `rgb(0,255,0)`;
+  spiller.rainbowEffect = false;
+  greenSelect.style.border = "2px solid white";
+  redSelect.style.borderStyle = "none";
+  blueSelect.style.borderStyle = "none";
+  yellowSelect.style.borderStyle = "none";
+  rainbowSelect.style.borderStyle = "none";
+};
+redSelect.onclick = () => {
+  spiller.farge = `red`;
+  spiller.rainbowEffect = false;
+  redSelect.style.border = "2px solid white";
+  greenSelect.style.borderStyle = "none";
+  blueSelect.style.borderStyle = "none";
+  yellowSelect.style.borderStyle = "none";
+  rainbowSelect.style.borderStyle = "none";
+};
+blueSelect.onclick = () => {
+  spiller.farge = `blue`;
+  spiller.rainbowEffect = false;
+
+  blueSelect.style.border = "2px solid white";
+  greenSelect.style.borderStyle = "none";
+  redSelect.style.borderStyle = "none";
+  yellowSelect.style.borderStyle = "none";
+  rainbowSelect.style.borderStyle = "none";
+};
+yellowSelect.onclick = () => {
+  spiller.farge = `yellow`;
+  spiller.rainbowEffect = false;
+
+  yellowSelect.style.border = "2px solid white";
+  redSelect.style.borderStyle = "none";
+  blueSelect.style.borderStyle = "none";
+  greenSelect.style.borderStyle = "none";
+  rainbowSelect.style.borderStyle = "none";
+};
+
+rainbowSelect.onclick = () => {
+  spiller.rainbowEffect = true;
+
+  rainbowSelect.style.border = "2px solid white";
+  redSelect.style.borderStyle = "none";
+  blueSelect.style.borderStyle = "none";
+  greenSelect.style.borderStyle = "none";
+  yellowSelect.style.borderStyle = "none";
+};

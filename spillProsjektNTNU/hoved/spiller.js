@@ -4,7 +4,7 @@ class Spiller {
     this.y = platform.y - platform.h * 2;
     this.w = platform.w / 4;
     this.h = platform.h * 2;
-    this.farge = `rgb(0,255,0)`;
+    this.farge = 0;
     this.svart = `black`;
     this.retning = 0;
     this.gravity = 0.2;
@@ -14,12 +14,23 @@ class Spiller {
     this.motVenstre = false;
     this.motHoyre = false;
     this.teste = "#0b6301";
+    this.rainbowEffect = false;
   }
 
   tegn() {
+    if (this.rainbowEffect == true) {
+      this.farge =
+        "rgb(" +
+        Math.floor(Math.random() * 255) +
+        "," +
+        Math.floor(Math.random() * 255) +
+        ", " +
+        Math.floor(Math.random() * 255) +
+        " )";
+    }
     //skygge
     if (this.stille == true) {
-      drawingContext.shadowColor = "green";
+      drawingContext.shadowColor = this.farge;
 
       //Farge for figur
       fill(this.farge);
@@ -58,12 +69,12 @@ class Spiller {
         PI
       );
     } else if (this.motVenstre == true) {
-      drawingContext.shadowColor = "green";
+      drawingContext.shadowColor = this.farge;
 
       //Farge for figur
       fill(this.farge);
 
-      //Armer
+      //Venstre Arm
       rect(
         this.x - this.w / 4 + this.w / 6,
         this.y + this.armer,
@@ -73,6 +84,8 @@ class Spiller {
 
       //Kropp
       rect(this.x + this.w / 6, this.y, this.w - this.w / 4, this.h / 2);
+
+      //Høyre arm
       rect(
         this.x + this.w - this.w / 6,
         this.y + this.armer,
@@ -111,7 +124,7 @@ class Spiller {
         PI
       );
     } else if (this.motHoyre == true) {
-      drawingContext.shadowColor = "green";
+      drawingContext.shadowColor = this.farge;
 
       //Farge for figur
       fill(this.farge);
