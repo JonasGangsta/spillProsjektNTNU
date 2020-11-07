@@ -28,7 +28,7 @@ function resetSketch() {
         platformer[i].x < platformer[j].x + platformer[j].w &&
         platformer[i].y + platformer[i].h * 4 > platformer[j].y &&
         platformer[i].y - platformer[i].h * 2 <
-        platformer[j].y + platformer[j].h
+          platformer[j].y + platformer[j].h
       ) {
         platformer.pop();
         i--;
@@ -181,7 +181,7 @@ function UpdateScore() {
   if (score > localStorage.getItem("highscore")) {
     localStorage.setItem("highscore", score);
     document.getElementById("dinHighscore").innerHTML = score;
-    if (score >= 20) {
+    if (score >= 15) {
       document.getElementById("status").innerHTML = "Velg farge:";
     }
   } else {
@@ -230,11 +230,11 @@ function sjekkData() {
   }
 }
 
-if (localStorage.getItem("highscore") >= 20) {
+if (localStorage.getItem("highscore") >= 15) {
   document.getElementById("status").innerHTML = "Velg farge:";
 } else {
   document.getElementById("status").innerHTML =
-    "Få en highscore på 20+ for å låse opp fargevalg!";
+    "Få en highscore på 15+ for å låse opp fargevalg!";
 }
 //Custom colors
 
@@ -246,85 +246,90 @@ let blueSelect = document.getElementById("blue");
 let yellowSelect = document.getElementById("yellow");
 let rainbowSelect = document.getElementById("rainbow");
 
+function setBorderNone() {
+  greenSelect.style.borderStyle = "none";
+  redSelect.style.borderStyle = "none";
+  blueSelect.style.borderStyle = "none";
+  yellowSelect.style.borderStyle = "none";
+  rainbowSelect.style.borderStyle = "none";
+}
 greenSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 20) {
+  if (localStorage.getItem("highscore") >= 15) {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-
+    regnbueModus = false;
+    setBorderNone();
     greenSelect.style.border = "2px solid white";
-    redSelect.style.borderStyle = "none";
-    blueSelect.style.borderStyle = "none";
-    yellowSelect.style.borderStyle = "none";
-    rainbowSelect.style.borderStyle = "none";
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
+    duTrenger15();
   }
 };
 redSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 20) {
+  if (localStorage.getItem("highscore") >= 15) {
     colorselected = `red`;
     spiller.farge = "red";
-
+    regnbueModus = false;
+    setBorderNone();
     redSelect.style.border = "2px solid white";
-    greenSelect.style.borderStyle = "none";
-    blueSelect.style.borderStyle = "none";
-    yellowSelect.style.borderStyle = "none";
-    rainbowSelect.style.borderStyle = "none";
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
+    duTrenger15();
   }
 };
 
 blueSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 20) {
+  if (localStorage.getItem("highscore") >= 15) {
     colorselected = `blue`;
     spiller.farge = "blue";
-
+    regnbueModus = false;
+    setBorderNone();
     blueSelect.style.border = "2px solid white";
-    greenSelect.style.borderStyle = "none";
-    redSelect.style.borderStyle = "none";
-    yellowSelect.style.borderStyle = "none";
-    rainbowSelect.style.borderStyle = "none";
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
+    duTrenger15();
   }
 };
 yellowSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 20) {
+  if (localStorage.getItem("highscore") >= 15) {
     colorselected = `yellow`;
     spiller.farge = "yellow";
-
+    regnbueModus = false;
+    setBorderNone();
     yellowSelect.style.border = "2px solid white";
-    redSelect.style.borderStyle = "none";
-    blueSelect.style.borderStyle = "none";
-    greenSelect.style.borderStyle = "none";
-    rainbowSelect.style.borderStyle = "none";
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
+    duTrenger15();
   }
 };
 
 rainbowSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 30) {
+  if (localStorage.getItem("highscore") >= 20) {
     regnbueModus = true;
-
+    setBorderNone();
     rainbowSelect.style.border = "2px solid white";
-    redSelect.style.borderStyle = "none";
-    blueSelect.style.borderStyle = "none";
-    greenSelect.style.borderStyle = "none";
-    yellowSelect.style.borderStyle = "none";
   } else {
     let colorselected = "rgb(0,255,0)";
     document.getElementById("status").innerHTML =
-      "Du trenger 30+ for regnbuefarge :)";
+      "Du trenger 20+ for regnbuefarge :)";
     setTimeout(function () {
-      if (localStorage.getItem("highscore") >= 20) {
+      if (localStorage.getItem("highscore") >= 15) {
         document.getElementById("status").innerHTML = "Velg farge:";
-      } else document.getElementById("status").innerHTML = "Få en highscore på 20+ for å låse opp fargevalg!";
+      } else document.getElementById("status").innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
     }, 2000);
   }
 };
+
+function duTrenger15() {
+  document.getElementById("status").innerHTML =
+    "Du trenger 15+ i highscore for å bytte farge";
+  setTimeout(function () {
+    if (localStorage.getItem("highscore") >= 15) {
+      document.getElementById("status").innerHTML = "Velg farge:";
+    } else document.getElementById("status").innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
+  }, 2000);
+}

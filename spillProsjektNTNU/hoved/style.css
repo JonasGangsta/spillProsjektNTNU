@@ -116,39 +116,52 @@ span {
   background-color: yellow;
 }
 #rainbow {
-  animation: rainbow 2.5s linear;
+  animation: regnbueAnimasjon 3.5s linear;
   animation-iteration-count: infinite;
 }
 
-@keyframes rainbow {
+@keyframes regnbueAnimasjon {
   100%,
   0% {
-    background-color: rgb(255, 0, 255);
+    background-color: rgb(253, 108, 89);
   }
-  15% {
-    background-color: rgb(255, 0, 0);
+  10% {
+    background-color: red;
   }
+
+  20% {
+    background-color: orange;
+  }
+  20% {
+    background-color: rgb(255, 191, 73);
+  }
+
   30% {
-    background-color: rgb(255, 127, 0);
-  }
-  45% {
-    background-color: rgb(255, 255, 0);
+    background-color: yellow;
   }
 
+  40% {
+    background-color: lightgreen;
+  }
+
+  50% {
+    background-color: green;
+  }
   60% {
-    background-color: rgb(0, 255, 0);
+    background-color: blue;
   }
-
-  75% {
-    background-color: rgb(0, 255, 255);
+  70% {
+    background-color: lightblue;
   }
-
+  80% {
+    background-color: rgb(190, 103, 253);
+  }
   90% {
-    background-color: rgb(0, 0, 255);
+    background-color: indigo;
   }
 
   100% {
-    background-color: rgb(255, 0, 255);
+    background-color: rgb(253, 108, 89);
   }
 }
 
@@ -178,7 +191,7 @@ span {
   margin: 10%;
   text-shadow: 0px 0.5px red;
 }
-@media only screen and (max-width: 1200px), screen and (max-height: 633px) {
+@media only screen and (max-width: 1200px), screen and (max-height: 513px) {
   #controls,
   #leaderboard {
     display: none;
@@ -188,6 +201,8 @@ span {
     margin-left: 35%;
     margin-right: auto;
   }
+}
+@media only screen and (max-height: 640px) {
   #knapp-container {
     display: none;
   }
