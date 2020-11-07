@@ -28,7 +28,7 @@ function resetSketch() {
         platformer[i].x < platformer[j].x + platformer[j].w &&
         platformer[i].y + platformer[i].h * 4 > platformer[j].y &&
         platformer[i].y - platformer[i].h * 2 <
-          platformer[j].y + platformer[j].h
+        platformer[j].y + platformer[j].h
       ) {
         platformer.pop();
         i--;
