@@ -89,6 +89,7 @@ body {
   color: red;
   text-decoration: underline;
   text-shadow: -1px 1px maroon;
+  margin-top: 2%;
 }
 #controls > p,
 #leaderboard > p {
@@ -165,10 +166,11 @@ span {
   position: relativ;
   color: #adff2f;
   height: 5%;
-  margin-bottom: 15%;
+  margin-bottom: 0%;
 }
 #status {
   padding: 5%;
+  margin-top: 15%;
 }
 #leaderboard > p {
   color: #adff2f;
@@ -203,20 +205,20 @@ span {
     visibility: hidden;
   }
 }
-@media only screen and (max-height: 800px) {
+/* @media only screen and (max-height: 800px) {
   #controls > h1,
   #leaderboard > h1 {
-    font-size: 150%;
+    font-size: 200%;
     color: red;
     text-decoration: underline;
     text-shadow: -1px 1px maroon;
   }
   #controls > p,
   #leaderboard > p {
-    font-size: 100%;
+    font-size: 150%;
     color: red;
   }
-}
+} */
 #innstillinger {
   z-index: 10;
   pointer-events: all;
