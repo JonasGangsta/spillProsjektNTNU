@@ -50,9 +50,10 @@ body {
   margin-left: 28%;
   margin-right: 30%;
   text-align: center;
-  font-size: 300%;
+  font-size: 7vh;
 }
 #grid-container {
+  font-size: 2vh;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-gap: 4.7%;
@@ -70,15 +71,6 @@ body {
 
 #pilopp {
   color: #adff2f;
-}
-.btnContainer > div {
-  display: block;
-  width: auto;
-  height: auto;
-  margin-top: 3%;
-  padding: 3%;
-  font-size: 800%;
-  cursor: grab;
 }
 .knappHover > p {
   text-align: center;
@@ -104,8 +96,8 @@ span {
 }
 
 .dot {
-  height: 25px;
-  width: 25px;
+  height: 3vh;
+  width: 3vh;
 
   border-radius: 50%;
   display: inline-block;
@@ -186,7 +178,7 @@ span {
   margin: 10%;
   text-shadow: 0px 0.5px red;
 }
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1200px), screen and (max-height: 633px) {
   #controls,
   #leaderboard {
     display: none;
@@ -205,6 +197,7 @@ span {
     visibility: hidden;
   }
 }
+/*
 @media only screen and (max-height: 800px) {
   #controls > h1,
   #leaderboard > h1 {
@@ -219,6 +212,7 @@ span {
     color: red;
   }
 }
+*/
 #innstillinger {
   z-index: 10;
   pointer-events: all;
