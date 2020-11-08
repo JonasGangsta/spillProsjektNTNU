@@ -223,12 +223,20 @@ class Spiller {
     if (spiller.kollisjon()) {
       spiller.gravitySpeed = -spiller.h / 6.14;
       spiller.y = spiller.y - spiller.h / 2.1;
+      spiller.armer = -15;
+      setTimeout(function () {
+        spiller.armer = 0;
+      }, 700);
     }
   }
   ned() {
     if (spiller.kollisjon()) {
       spiller.gravitySpeed = 2;
       spiller.y += 16;
+      spiller.armer = -15;
+      setTimeout(function () {
+        spiller.armer = 0;
+      }, 400);
     }
   }
   kollisjon() {

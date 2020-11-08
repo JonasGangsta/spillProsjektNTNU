@@ -8,6 +8,7 @@ let score = 0;
 let platformer = [];
 let hindere = [];
 let hinderTall = 5;
+let fargeblindmode = 0;
 function setup() {
   mode = 0;
   var canvas = createCanvas(windowWidth / 1.9, windowHeight / 1.5);
@@ -98,7 +99,6 @@ function draw() {
     drawingContext.shadowColor = "red";
     textSize(windowWidth / 20);
     background(0);
-
     textFont("VT323");
     textAlign(CENTER);
     fill(`Maroon`);
@@ -150,16 +150,8 @@ function keyPressed() {
     }
   } else if (keyCode === 38 || keyCode === 87) {
     spiller.hopp();
-    spiller.armer = -15;
-    setTimeout(function () {
-      spiller.armer = 0;
-    }, 700);
   } else if (keyCode === 40 || keyCode === 83) {
     spiller.ned();
-    spiller.armer = -15;
-    setTimeout(function () {
-      spiller.armer = 0;
-    }, 400);
   }
 }
 function keyReleased() {
@@ -216,8 +208,8 @@ window.onclick = function (event) {
   }
 };
 function sjekkData() {
-  let checkBox = document.getElementById("hideRules");
-  if (checkBox.checked == false) {
+  let checkBoxRules = document.getElementById("hideRules");
+  if (checkBoxRules.checked == false) {
     rules.style.visibility = "hidden";
     highscoreInfo.style.visibility = "hidden";
 

@@ -212,22 +212,6 @@ span {
     visibility: hidden;
   }
 }
-/*
-@media only screen and (max-height: 800px) {
-  #controls > h1,
-  #leaderboard > h1 {
-    font-size: 200%;
-    color: red;
-    text-decoration: underline;
-    text-shadow: -1px 1px maroon;
-  }
-  #controls > p,
-  #leaderboard > p {
-    font-size: 150%;
-    color: red;
-  }
-}
-*/
 #innstillinger {
   z-index: 10;
   pointer-events: all;
@@ -252,13 +236,16 @@ span {
   color: maroon;
 }
 .menyinnhold {
+  border-style: solid;
+  border-color: maroon;
+  outline: 1px groove #b61a1a;
   overflow: hidden;
   margin-top: 50px;
   width: 20%;
   height: 6%;
   display: none;
   position: absolute;
-  background-color: #f1f1f1;
+  background-color: black;
   min-width: 160px;
   overflow: auto;
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
@@ -281,7 +268,9 @@ span {
 .ned {
   margin-top: 10% !important;
 }
-
+b {
+  color: white;
+}
 #VisTekst {
   left: 15px;
   top: 5px;
