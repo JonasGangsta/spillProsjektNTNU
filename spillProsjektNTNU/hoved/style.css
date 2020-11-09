@@ -104,7 +104,7 @@ span {
   display: inline-block;
 }
 .dot:hover {
-  -webkit-filter: brightness(51%);
+  -webkit-filter: brightness(80%);
 }
 
 #green {
