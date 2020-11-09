@@ -173,8 +173,8 @@ function UpdateScore() {
   if (score > localStorage.getItem("highscore")) {
     localStorage.setItem("highscore", score);
     document.getElementById("dinHighscore").innerHTML = score;
-    if (score >= 15) {
-      document.getElementById("status").innerHTML = "Velg farge:";
+    if (score >= 10) {
+      document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
     }
   } else {
     document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
@@ -222,11 +222,11 @@ function sjekkData() {
   }
 }
 
-if (localStorage.getItem("highscore") >= 15) {
-  document.getElementById("status").innerHTML = "Velg farge:";
+if (localStorage.getItem("highscore") >= 10) {
+  document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
 } else {
   document.getElementById("status").innerHTML =
-    "Få en highscore på 15+ for å låse opp fargevalg!";
+    "Få en highscore på 10+ for å låse opp fargevalg!";
 }
 //Custom colors
 
@@ -246,7 +246,7 @@ function setBorderNone() {
   rainbowSelect.style.borderStyle = "none";
 }
 greenSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 15) {
+  if (localStorage.getItem("highscore") >= 10) {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
     regnbueModus = false;
@@ -255,11 +255,11 @@ greenSelect.onclick = () => {
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    duTrenger15();
+    duTrenger10();
   }
 };
 redSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 15) {
+  if (localStorage.getItem("highscore") >= 10) {
     colorselected = `red`;
     spiller.farge = "red";
     regnbueModus = false;
@@ -268,12 +268,12 @@ redSelect.onclick = () => {
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    duTrenger15();
+    duTrenger10();
   }
 };
 
 blueSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 15) {
+  if (localStorage.getItem("highscore") >= 10) {
     colorselected = `blue`;
     spiller.farge = "blue";
     regnbueModus = false;
@@ -282,11 +282,11 @@ blueSelect.onclick = () => {
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    duTrenger15();
+    duTrenger10();
   }
 };
 yellowSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 15) {
+  if (localStorage.getItem("highscore") >= 10) {
     colorselected = `yellow`;
     spiller.farge = "yellow";
     regnbueModus = false;
@@ -295,33 +295,33 @@ yellowSelect.onclick = () => {
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    duTrenger15();
+    duTrenger10();
   }
 };
 
 rainbowSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 20) {
+  if (localStorage.getItem("highscore") >= 15) {
     regnbueModus = true;
     setBorderNone();
     rainbowSelect.style.border = "2px solid white";
   } else {
     let colorselected = "rgb(0,255,0)";
     document.getElementById("status").innerHTML =
-      "Du trenger 20+ for regnbuefarge :)";
+      "Du trenger 15+ for regnbuefarge :)";
     setTimeout(function () {
-      if (localStorage.getItem("highscore") >= 15) {
-        document.getElementById("status").innerHTML = "Velg farge:";
-      } else document.getElementById("status").innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
+      if (localStorage.getItem("highscore") >= 10) {
+        document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
+      } else document.getElementById("status").innerHTML = "Få en highscore på 10+ for å låse opp fargevalg!";
     }, 2000);
   }
 };
 
-function duTrenger15() {
+function duTrenger10() {
   document.getElementById("status").innerHTML =
-    "Du trenger 15+ i highscore for å bytte farge";
+    "Du trenger 10+ i highscore for å bytte farge";
   setTimeout(function () {
-    if (localStorage.getItem("highscore") >= 15) {
-      document.getElementById("status").innerHTML = "Velg farge:";
-    } else document.getElementById("status").innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
+    if (localStorage.getItem("highscore") >= 10) {
+      document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
+    } else document.getElementById("status").innerHTML = "Få en highscore på 10+ for å låse opp fargevalg!";
   }, 2000);
 }
