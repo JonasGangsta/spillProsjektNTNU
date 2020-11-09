@@ -97,19 +97,21 @@ function draw() {
     drawingContext.shadowOffsetY = 2.5;
     drawingContext.shadowBlur = 3;
     drawingContext.shadowColor = "red";
-    textSize(windowWidth / 20);
+    
     background(0);
     textFont("VT323");
     textAlign(CENTER);
     fill(`Maroon`);
     if (spiller.y > height + height) {
+      textSize(windowWidth / 20);
       text(
         `DU FALT TIL DØDEN!`,
         windowWidth / 3.8,
         windowHeight / 3 - windowHeight / 10
       );
     } else {
-      text(`DU DØDE!`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
+      textSize(windowWidth / 22);
+      text(`DU DØDE! (UNNGÅ GLASS-SKÅR)`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
     }
     fill(`Maroon`);
     textSize(windowWidth / 22);
