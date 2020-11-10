@@ -179,14 +179,9 @@ $("#dinHighscore").innerHTML = localStorage.getItem(
   "highscore",
   score
 );
-<<<<<<< HEAD
 //Denne funksjonen oppdaterer highscore informasjonen på siden hvis score er større en summen i local storage.
 //Hvis score < nåværende highscore, vil den nåværende highscore fortsatt vises
 function UpdateScore() {
-=======
-
-function updateScore() {
->>>>>>> 799410ef40b691a625441365f1361493ff6b2f82
   if (score > lokalLager) {
     localStorage.setItem("highscore", score);
     $("#dinHighscore").innerHTML = score;
@@ -201,13 +196,10 @@ function updateScore() {
   }
 }
 
-<<<<<<< HEAD
 function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }
 
-=======
->>>>>>> 799410ef40b691a625441365f1361493ff6b2f82
 let button = $("#innstillinger");
 let kontroller = $("#controls");
 let highscoreInfo = $("#leaderboard");
