@@ -187,7 +187,7 @@ $("#dinHighscore").innerHTML = localStorage.getItem(
 );
 //Denne funksjonen oppdaterer highscore informasjonen på siden hvis score er større en summen i local storage.
 //Hvis score < nåværende highscore, vil den nåværende highscore fortsatt vises
-function UpdateScore() {
+function updateScore() {
   if (score > lokalLager) {
     localStorage.setItem("highscore", score);
     $("#dinHighscore").innerHTML = score;
@@ -239,7 +239,7 @@ window.onclick = function(meny) {
 
     for (index = 0; index < innhold.length; index++) {
   //Viser meny
-      let openMeny = innhold[indx];
+      let openMeny = innhold[index];
       if (openMeny.classList.contains("vis")) {
         openMeny.classList.remove("vis");
       }
