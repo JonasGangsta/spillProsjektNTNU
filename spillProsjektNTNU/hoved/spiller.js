@@ -246,7 +246,7 @@ class Spiller {
     if (spiller.kollisjon()) {
       spiller.gravitySpeed = 2;
       spiller.y += 16;
-      spiller.armer = -15; //Løfter armene. Setter armverdien til -15. Etter 400 millisekunder settes armverdien til 0 igjen og armene senkes.
+      spiller.armer = -15; //Løfter armene. Setter armverdien til -15. Etter 700 millisekunder settes armverdien til 0 igjen og armene senkes.
       setTimeout(function() {
         spiller.armer = 0;
       }, 400);
