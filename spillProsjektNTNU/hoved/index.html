@@ -28,15 +28,15 @@
 
   <body>
     <main>
-
+     <!-- Dette elementer innholder en checkbox som gjør det mulig å gjemme kontroll og highscore fra siden-->
       <i class="material-icons" id="innstillinger">settings</i>
       <div id="meny" class="menyinnhold">
         <div id="VisTekst">
           <b>Vis regler og scoreboard</b>
-          <input aria-label="Gjem kontroller og highscore" type="checkbox" id="hideRules" onclick="sjekkData()" checked />
+          <input aria-label="Gjem kontroller og highscore" type="checkbox" id="hideKontroller" onclick="sjekkData()" checked />
         </div>
       </div>
-
+   <!--Dette er et grid for tittelen som inneholder av 3 elementer-->
       <div id="tittel-kontainer">
         <img id="kebabBilde" src="bilder/pixelbab.png" alt="kebab" />
         <div id="title">
@@ -44,6 +44,7 @@
         </div>
         <img id="burgerBilde" src="bilder/pixelburger.png" alt="burger" />
       </div>
+      <!--Dette gridet deler siden inni 3 hoveddeler. Kontroller, Canvas og Highscore.-->
       <div id="grid-container">
         <div class="infoContainer" id="controls" aria-label="Kontroller">
           <h1>Kontroller</h1>
@@ -70,6 +71,7 @@
       </div>
         </div>
       </div>
+      <!--Dette er et grid for knappene nederst på siden-->
       <div id="knapp-container">
         <p>Om oss</p>
         <p>Spill</p>

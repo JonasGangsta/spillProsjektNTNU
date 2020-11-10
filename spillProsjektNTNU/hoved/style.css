@@ -19,7 +19,7 @@ body {
   margin-top: 0%;
 }
 
-#title>h1 {
+#title > h1 {
   text-align: center;
   font-size: 800%;
   margin-bottom: 2%;
@@ -69,7 +69,7 @@ body {
   background-color: black !important;
 }
 
-#grid-container>div {
+#grid-container > div {
   text-align: center;
   border-style: solid;
   border-color: maroon;
@@ -80,12 +80,12 @@ body {
   color: red;
 }
 
-.knappHover>p {
+.knappHover > p {
   text-align: center;
 }
 
-#controls>h1,
-#leaderboard>h1 {
+#controls > h1,
+#leaderboard > h1 {
   font-size: 250%;
   color: red;
   text-decoration: underline;
@@ -93,8 +93,8 @@ body {
   margin-top: 2%;
 }
 
-#controls>p,
-#leaderboard>p {
+#controls > p,
+#leaderboard > p {
   font-size: 150%;
   color: red;
 }
@@ -141,7 +141,6 @@ span {
 }
 
 @keyframes regnbueAnimasjon {
-
   100%,
   0% {
     background-color: rgb(253, 108, 89);
@@ -192,7 +191,7 @@ span {
   }
 }
 
-#leaderboard>#dinHighscore {
+#leaderboard > #dinHighscore {
   font-size: 400%;
   margin-top: 10%;
   position: relativ;
@@ -206,7 +205,7 @@ span {
   margin-top: 15%;
 }
 
-#leaderboard>p {
+#leaderboard > p {
   color: #adff2f;
 }
 
@@ -218,19 +217,18 @@ span {
   background-color: black;
 }
 
-#knapp-container>p {
+#knapp-container > p {
   margin: 10%;
   color: rgb(240, 0, 0);
   text-shadow: 0px 0.5px red;
   cursor: pointer;
 }
 
-#knapp-container>p:hover {
+#knapp-container > p:hover {
   color: maroon;
 }
 
 @media only screen and (max-width: 1200px), screen and (max-height: 513px) {
-
   #controls,
   #leaderboard {
     display: none;
@@ -308,7 +306,7 @@ span {
   /* Gjem scrollbar*/
 }
 
-.show {
+.vis {
   display: block;
 }
 
