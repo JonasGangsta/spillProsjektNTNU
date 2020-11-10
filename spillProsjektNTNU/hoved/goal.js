@@ -1,11 +1,11 @@
-class Goal {
-  constructor() {
-    let platform = platformer[Math.floor(Math.random() * platformer.length)];
-    platform.harPoeng = true;
+class Goal { //Lager et class kalt goal (kebaber)
+  constructor() { //En konstructor for kebaben
+    let platform = platformer[Math.floor(Math.random() * platformer.length)]; //Velger en tilfeldig platform
+    platform.harPoeng = true; //Setter at platformen har et poeng på seg altså slik at det ikke kan genereres et hinder der
 
-    this.x = platform.x + platform.w / 2;
-    this.y = platform.y - platform.h / 1.5;
-    this.r = 10;
+    this.x = platform.x + platform.w / 2; //X posisjon
+    this.y = platform.y - platform.h / 1.5; //Y posisjon
+    this.r = 10; //Radius
     this.farge = `rgb(239, 240, 246))`;
     this.tortilla = `rgb(255,215,174)`;
     this.tomat = `rgb(255, 0, 0)`;

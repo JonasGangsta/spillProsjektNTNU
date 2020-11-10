@@ -1,3 +1,4 @@
+// Deklarerer variabler
 const $ = document.querySelector.bind(document);
 const game = $("#game");
 const btnContainer = $(".btnContainer");
@@ -10,68 +11,70 @@ let hindere = [];
 let hinderTall = 5;
 let fargeblindmode = 0;
 
+//Setup funksjonen til p5js kjører og lager et canvas
 function setup() {
-  mode = 0;
+  mode = 0; //Mode = 0 sier at spillet ikke skal startes
   var canvas = createCanvas(windowWidth / 1.9, windowHeight / 1.5);
   canvas.parent(`game`);
-  resetSketch();
+  resetSketch(); //Kjører ''resetsketch'' som her starter spillet for første gang
 }
 
+//Resetsketch gjør at spillet både vil kunne starte den første banen, men også lage nye baner når man enten dør eller treffer en kebab.
 function resetSketch() {
-  platformer = [];
+  platformer = []; //Platformer of hindere må resettes slik at funksjonen kan lage nye
   hindere = [];
-  let k = 0;
-  for (let i = 0; k < 40; i++) {
+  let k = 0; //Variablen k må legges til fordi forløkken skal gå gjennom 40 ganger.
+  for (let i = 0; k < 40; i++) {  //Loopen itererer til k >= 40
     console.log("Lager platform");
-    k++;
-    platformer[i] = new Platform();
-    for (let j = 0; j < platformer.length - 1; j++) {
-      if (
+    k++; //Det plusses på en k hver gang løkken kjøres
+    platformer[i] = new Platform(); //En platform lages
+    for (let j = 0; j < platformer.length - 1; j++) {  //Looper gjennom alle platformenme som har blitt laget minus den som nettop ble laget (lenght -1)
+      if (  //Tester om den genererte platformen kolliderer med en av de andre platformene
         platformer[i].x + platformer[i].w > platformer[j].x &&
         platformer[i].x < platformer[j].x + platformer[j].w &&
         platformer[i].y + platformer[i].h * 4 > platformer[j].y &&
         platformer[i].y - platformer[i].h * 2 <
         platformer[j].y + platformer[j].h
-      ) {
+      ) { //Hvis de kolliderer, så blir platformen slettet, og det blir trukket fra en i
         platformer.pop();
         i--;
       }
     }
   }
-  let platformSpiller =
-    platformer[Math.floor(Math.random() * platformer.length)];
-  platformSpiller.harSpiller = true;
-  spiller = new Spiller(platformSpiller);
-  goal = new Goal();
-  for (let i = 0; i <= hinderTall; i++) {
-    let platform = platformer[Math.floor(Math.random() * platformer.length)];
-    if (platform.harPoeng || platform.harSpiller) {
+  let platformSpiller = platformer[Math.floor(Math.random() * platformer.length)]; //Tar en tilfeldig platform
+  platformSpiller.harSpiller = true; //Platformen som har spilleren endrer verdien harSpiller til true (dette gjøres fordi glasskår og kebaber ikke skal kunne genereres her)
+  spiller = new Spiller(platformSpiller); //Posisjonerer spilleren på denne platformen
+  goal = new Goal(); //Nytt goal
+  for (let i = 0; i <= hinderTall; i++) { //Genererer hinderTall antall glassskår
+    let platform = platformer[Math.floor(Math.random() * platformer.length)]; //Tar en tilfeldig platform
+    if (platform.harPoeng || platform.harSpiller) { //Hvis denne platformen har et poeng eller en spiller så fortsetter løkken.
       i--;
       continue;
     }
-    hindere[i] = new Hinder(platform);
+    hindere[i] = new Hinder(platform); //Hvis testen over ble godkjent, så lager den platformen
   }
 }
 
+//Draw funksjonen til p5js kjøres, som tegner spillet 60 ganger i sekundet
 function draw() {
   clear();
-  if (mode == 0) {
-    if (frameCount % 180 < 110) {
-      drawingContext.shadowOffsetX = -2.5;
+  if (mode == 0) { //Hvis mode = 0 skal startskjermen være på
+    if (frameCount % 180 < 110) { //Gjør at teksten blinker, 3s på, litt under 2s av
+      drawingContext.shadowOffsetX = -2.5; //Lager skygge på eventuell tekst
       drawingContext.shadowOffsetY = 2.5;
       drawingContext.shadowBlur = 3;
       drawingContext.shadowColor = "red";
-      textSize(windowWidth / 20);
-      background(0);
-      fill(`Maroon`);
+      textSize(windowWidth / 20); //Størrelsen på teksten
+      background(0); //Bakgrunnsfargen er svart
+      fill(`Maroon`); //Stil på teksten
       textFont("VT323");
       textAlign(CENTER);
-      text(`CLICK ENTER TO START`, windowWidth / 3.8, windowHeight / 3);
-    } else {
+      text(`CLICK ENTER TO START`, windowWidth / 3.8, windowHeight / 3); //Lager teksten
+    } else { //Hvis det ikke vises tekst skal det bare være svart bakgrunn alene
       background(0);
     }
   }
-  if (mode == 1) {
+  if (mode == 1) { //Hvis mode = 1 skal spillet kjøres
     background(0);
     textSize(windowWidth / 30);
     fill(`green`);
@@ -82,20 +85,18 @@ function draw() {
     drawingContext.shadowBlur = 3;
     drawingContext.shadowColor = `lightgreen`;
     text(`Score: ${score}`, windowWidth / 3.8, windowHeight / 25);
-    for (let i = platformer.length - 1; i >= 0; i -= 1) {
-      platformer[i].tegn();
+    for (let i = platformer.length - 1; i >= 0; i -= 1) { //For alle platformene som er generert
+      platformer[i].tegn(); //Bruker funksjonen definert i hinder.js og tegner platformene
     }
-    for (let i = hindere.length - 1; i >= 0; i -= 1) {
+    for (let i = hindere.length - 1; i >= 0; i -= 1) { //Tegner alle hinderene
       hindere[i].tegn();
     }
-    goal.tegn();
-    spiller.tegn();
-    spiller.flytt();
+    goal.tegn();  //Tegner kebab (funksjonen er definert i goal.js)
+    spiller.tegn(); //Tegner spilleren
+    spiller.flytt(); //Lar spilleren flytte seg
   }
-  if (mode == 2) {
-    background(0);
-    UpdateScore();
-
+  if (mode == 2) { //Hvis mode = 2 skal dødsskjermen vises
+    updateScore(); //Kjører funksjonen som oppdaterer localstorage
     drawingContext.shadowOffsetX = -2.5;
     drawingContext.shadowOffsetY = 2.5;
     drawingContext.shadowBlur = 3;
@@ -104,20 +105,20 @@ function draw() {
     textFont("VT323");
     textAlign(CENTER);
     fill(`Maroon`);
-    if (spiller.y > height + height) {
+    if (spiller.y > height + height) { //Kjører hvis spilleren har falt utenfor spillet
       textSize(windowWidth / 20);
       text(
         `DU FALT TIL DØDEN!`,
         windowWidth / 3.8,
         windowHeight / 3 - windowHeight / 10
       );
-    } else {
+    } else { //Kjører hvis spilleren døde åp en annen måte (glasskår)
       textSize(windowWidth / 22);
       text(`DU DØDE! (UNNGÅ GLASS-SKÅR)`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
     }
     fill(`Maroon`);
     textSize(windowWidth / 22);
-    text(
+    text( //Tekst som viser spilleren hvordan de kan restarte spillet
       `TRYKK ENTER FOR Å RESTARTE`,
       windowWidth / 3.8,
       windowHeight / 3 + windowHeight / 10
@@ -127,34 +128,34 @@ function draw() {
 
     textSize(windowWidth / 20);
     drawingContext.shadowColor = `lightGreen`;
-    if (frameCount % 160 < 90) {
+    if (frameCount % 160 < 90) { //Scoren skal blinke
       text(`SCORE: ${score}`, windowWidth / 3.8, windowHeight / 3);
     } else {}
   }
-  if (keyIsDown(37) || keyIsDown(65)) {
-    spiller.x -= 4;
+  if (keyIsDown(37) || keyIsDown(65)) { //Kjøres hvis venstre piltast eller A trykkes/holdes inne
+    spiller.x -= 4; //Flytter spilleren mot venstre
     spiller.stille = false;
     spiller.motVenstre = true;
   }
-  if (keyIsDown(39) || keyIsDown(68)) {
-    spiller.x += 4;
+  if (keyIsDown(39) || keyIsDown(68)) { //Kjøres hvis høyre piltast eller D trykkes/holdes inne
+    spiller.x += 4; //Flytter spilleren mot høyre
     spiller.stille = false;
     spiller.motHoyre = true;
   }
 }
 
-function keyPressed() {
-  if (keyCode === ENTER) {
-    if (mode == 2 || mode == 3 || mode == 0) {
-      mode = 1;
-      score = 0;
-      hinderTall = 5;
+function keyPressed() { //Hvis en piltast trykkes
+  if (keyCode === ENTER) { //På enter
+    if (mode == 2 || mode == 0) { //Hvis modus er 2 (dødsskjerm) eller 0 (startsskjerm)
+      mode = 1; //Sett mode til 0 (starter spillet)
+      score = 0; //Nullstiller score
+      hinderTall = 5; //Setter hinderTall til vanlig verdi
 
-      resetSketch();
+      resetSketch(); //Resetter sketchen
     }
-  } else if (keyCode === 38 || keyCode === 87) {
-    spiller.hopp();
-  } else if (keyCode === 40 || keyCode === 83) {
+  } else if (keyCode === 38 || keyCode === 87) { //Hvis man trykker piltast opp eller W hopper spilleren
+    spiller.hopp(); //Funksjonen går under classet spiller i spiller.js
+  } else if (keyCode === 40 || keyCode === 83) {//Hvis man trykker piltast ned eller S så hopper spilleren nedover
     spiller.ned();
   }
 }
@@ -169,12 +170,17 @@ function keyReleased() {
     spiller.motHoyre = false;
   }
 }
+
+function windowResized() { //P5js funksjon som kjøres når størrelsen på vinduet endres
+  resizeCanvas(windowWidth / 1.9, windowHeight / 1.5); //Endrer størrelsen på canvaset
+}
+
 $("#dinHighscore").innerHTML = localStorage.getItem(
   "highscore",
   score
 );
 
-function UpdateScore() {
+function updateScore() {
   if (score > lokalLager) {
     localStorage.setItem("highscore", score);
     $("#dinHighscore").innerHTML = score;
@@ -189,9 +195,6 @@ function UpdateScore() {
   }
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
-}
 let button = $("#innstillinger");
 let rules = $("#controls");
 let highscoreInfo = $("#leaderboard");

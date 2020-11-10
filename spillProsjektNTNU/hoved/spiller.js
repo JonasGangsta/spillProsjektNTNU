@@ -1,14 +1,14 @@
-class Spiller {
-  constructor(platform) {
-    this.x = platform.x + platform.w / 2;
-    this.y = platform.y - platform.h * 2;
-    this.w = platform.w / 4;
-    this.h = platform.h * 2;
+class Spiller { //Lager et class kalt spiller
+  constructor(platform) { //En constructor som tar inn den tilfeldige valgte platformen i script.js
+    this.x = platform.x + platform.w / 2; //Definerer x posisjonen på spilleren halveis inn på en platform
+    this.y = platform.y - platform.h * 2; //Definerer y posisjonen på spilleren
+    this.w = platform.w / 4; //Bredde
+    this.h = platform.h * 2; //Høyde
     this.farge = colorselected;
     this.svart = `black`;
     this.retning = 0;
-    this.gravity = 0.2;
-    this.gravitySpeed = 0;
+    this.gravity = 0.2; //Verdi for tyngdekraft
+    this.gravitySpeed = 0; //Tyngdekraftfarten starter på 0
     this.armer = 0;
     this.stille = true;
     this.motVenstre = false;
@@ -181,20 +181,19 @@ class Spiller {
     }
   }
 
-  flytt() {
-    let platformCollision =
-      spiller.gravitySpeed < 0 ? false : spiller.kollisjon();
-    if (!platformCollision) {
-      this.gravitySpeed += this.gravity;
-      this.y += this.gravitySpeed;
+  flytt() { //Funksjonen flytt som står for posisjon/bevegelse til spilleren
+    let platformCollision = spiller.gravitySpeed < 0 ? false : spiller.kollisjon(); //Tester om spilleren hopper oppover (gravityspeed < 0), for da skal den ikke kollidere med platformen
+    if (!platformCollision) { //Hvis ikke kollisjon
+      this.gravitySpeed += this.gravity; //Oppdaterer gravityspeed med 0.2 hver gang p5js kjører draw()
+      this.y += this.gravitySpeed; //Plusser på gravityspeed slik at spilleren går nedover og etter hvert aksellererer
     }
-    if (this.x < 0) {
-      this.x = width;
-    } else if (this.x > width) {
-      this.x = 0;
+    if (this.x < 0) { //Hvis spillerens x verdi er < 0
+      this.x = width; //Flyttes til høyre
+    } else if (this.x > width) { //Hvis spillerens x verdi er > bredden på canvaset
+      this.x = 0; //Flyttes til venstre
     }
-    for (let i = 0; i < hindere.length; i++) {
-      if (
+    for (let i = 0; i < hindere.length; i++) { //Kjører for alle hinderene
+      if ( //Test for om spilleren kolliderer med hinderene
         hindere[i].x2 - (hindere[i].x2 - hindere[i].x1) * 0.06 > spiller.x &&
         hindere[i].x1 + (hindere[i].x2 - hindere[i].x1) * 0.06 <
         spiller.x + spiller.w &&
@@ -202,44 +201,44 @@ class Spiller {
         hindere[i].y3 + (hindere[i].x2 - hindere[i].x1) * 0.2 <
         spiller.y + spiller.h
       ) {
-        mode = 2;
+        mode = 2; //Mode = 2 som betyr at spilleren dør
       }
     }
-    if (spiller.y > height + height) {
-      mode = 2;
-    }
-    if (
+    if (spiller.y > height + height) { //Hvis spilleren sin høyde er under canvaset (+ ekstra høyde slik at spilleren kan falle litt)
+      mode = 2; //Mode = 2 som betyr at spilleren dør
+      }
+    if ( //Sjekker om spilleren er over en kebab (goal)
       goal.x + goal.r > spiller.x &&
       goal.y + goal.r > spiller.y - spiller.h / 6 &&
       goal.x - goal.r < spiller.x + spiller.w &&
       goal.y - goal.r < spiller.y + spiller.h
     ) {
-      score += 1;
-      hinderTall += 1;
-      resetSketch();
+      score += 1; //Man får 1 i score
+      hinderTall += 1; //Det blir 1 mer hinder
+      resetSketch(); //Sketchen resettes (ny bane)
     }
   }
-  hopp() {
-    if (spiller.kollisjon()) {
-      spiller.gravitySpeed = -spiller.h / 6.14;
-      spiller.y = spiller.y - spiller.h / 2.1;
+  hopp() { //Hoppe funksjon
+    if (spiller.kollisjon()) { //Hvis spilleren kolliderer med platform
+      spiller.gravitySpeed = -spiller.h / 6.14; //Oppdaterer gravitySpeed slik at spilleren går oppover hvis den ikke er på en platform
+      spiller.y = spiller.y - spiller.h / 2.1; //Et lite ''dytt'' for å få spilleren til å gå oppover
       spiller.armer = -15;
       setTimeout(function() {
         spiller.armer = 0;
       }, 700);
     }
   }
-  ned() {
+  ned() { //Hoppe ned funksjon
     if (spiller.kollisjon()) {
-      spiller.gravitySpeed = 2;
-      spiller.y += 16;
+      spiller.gravitySpeed = 2; //Litt startsfart nedover
+      spiller.y += 16; //Flytter spilleren nedover slik at den er under platformen og kan falle (16 er 1 pixel over høyden platformen/spilleren sjekkes mot i kollisjon())
       spiller.armer = -15;
       setTimeout(function() {
         spiller.armer = 0;
       }, 400);
     }
   }
-  kollisjon() {
+  kollisjon() { //Sjekker om spilleren kolliderer med en platform
     for (let i = 0; i < platformer.length; i++) {
       if (
         platformer[i].x + platformer[i].w > spiller.x &&
@@ -247,8 +246,8 @@ class Spiller {
         platformer[i].y + 15 > spiller.y + spiller.h - 1 &&
         platformer[i].y < spiller.y + spiller.h
       ) {
-        this.gravitySpeed = 0;
-        return true;
+        this.gravitySpeed = 0; //Spillerens gravitySpeed settes til 0, og den vil da stå stille i y-verdi.
+        return true; //Spilleren kolliderer
       }
     }
   }
