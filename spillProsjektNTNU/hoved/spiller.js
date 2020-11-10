@@ -197,10 +197,10 @@ class Spiller {
       if (
         hindere[i].x2 - (hindere[i].x2 - hindere[i].x1) * 0.06 > spiller.x &&
         hindere[i].x1 + (hindere[i].x2 - hindere[i].x1) * 0.06 <
-          spiller.x + spiller.w &&
+        spiller.x + spiller.w &&
         hindere[i].y1 > spiller.y &&
         hindere[i].y3 + (hindere[i].x2 - hindere[i].x1) * 0.2 <
-          spiller.y + spiller.h
+        spiller.y + spiller.h
       ) {
         mode = 2;
       }
@@ -224,7 +224,7 @@ class Spiller {
       spiller.gravitySpeed = -spiller.h / 6.14;
       spiller.y = spiller.y - spiller.h / 2.1;
       spiller.armer = -15;
-      setTimeout(function () {
+      setTimeout(function() {
         spiller.armer = 0;
       }, 700);
     }
@@ -234,7 +234,7 @@ class Spiller {
       spiller.gravitySpeed = 2;
       spiller.y += 16;
       spiller.armer = -15;
-      setTimeout(function () {
+      setTimeout(function() {
         spiller.armer = 0;
       }, 400);
     }

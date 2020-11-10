@@ -9,12 +9,14 @@ let platformer = [];
 let hindere = [];
 let hinderTall = 5;
 let fargeblindmode = 0;
+
 function setup() {
   mode = 0;
   var canvas = createCanvas(windowWidth / 1.9, windowHeight / 1.5);
   canvas.parent(`game`);
   resetSketch();
 }
+
 function resetSketch() {
   platformer = [];
   hindere = [];
@@ -29,7 +31,7 @@ function resetSketch() {
         platformer[i].x < platformer[j].x + platformer[j].w &&
         platformer[i].y + platformer[i].h * 4 > platformer[j].y &&
         platformer[i].y - platformer[i].h * 2 <
-          platformer[j].y + platformer[j].h
+        platformer[j].y + platformer[j].h
       ) {
         platformer.pop();
         i--;
@@ -50,6 +52,7 @@ function resetSketch() {
     hindere[i] = new Hinder(platform);
   }
 }
+
 function draw() {
   clear();
   if (mode == 0) {
@@ -97,19 +100,21 @@ function draw() {
     drawingContext.shadowOffsetY = 2.5;
     drawingContext.shadowBlur = 3;
     drawingContext.shadowColor = "red";
-    textSize(windowWidth / 20);
+
     background(0);
     textFont("VT323");
     textAlign(CENTER);
     fill(`Maroon`);
     if (spiller.y > height + height) {
+      textSize(windowWidth / 20);
       text(
         `DU FALT TIL DØDEN!`,
         windowWidth / 3.8,
         windowHeight / 3 - windowHeight / 10
       );
     } else {
-      text(`DU DØDE!`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
+      textSize(windowWidth / 22);
+      text(`DU DØDE! (UNNGÅ GLASS-SKÅR)`, windowWidth / 3.8, windowHeight / 3 - windowHeight / 10);
     }
     fill(`Maroon`);
     textSize(windowWidth / 22);
@@ -125,8 +130,7 @@ function draw() {
     drawingContext.shadowColor = `lightGreen`;
     if (frameCount % 160 < 90) {
       text(`SCORE: ${score}`, windowWidth / 3.8, windowHeight / 3);
-    } else {
-    }
+    } else {}
   }
   if (keyIsDown(37) || keyIsDown(65)) {
     spiller.x -= 4;
@@ -139,6 +143,7 @@ function draw() {
     spiller.motHoyre = true;
   }
 }
+
 function keyPressed() {
   if (keyCode === ENTER) {
     if (mode == 2 || mode == 3 || mode == 0) {
@@ -154,6 +159,7 @@ function keyPressed() {
     spiller.ned();
   }
 }
+
 function keyReleased() {
   if (keyCode === 37 || keyCode === 65) {
     spiller.stille = true;
@@ -164,20 +170,20 @@ function keyReleased() {
     spiller.motHoyre = false;
   }
 }
-document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
+$("#dinHighscore").innerHTML = localStorage.getItem(
   "highscore",
   score
 );
 
 function UpdateScore() {
-  if (score > localStorage.getItem("highscore")) {
+  if (score > lokalLager) {
     localStorage.setItem("highscore", score);
-    document.getElementById("dinHighscore").innerHTML = score;
-    if (score >= 15) {
-      document.getElementById("status").innerHTML = "Velg farge:";
+    $("#dinHighscore").innerHTML = score;
+    if (score >= 10) {
+      $("#status").innerHTML = "<br>" + "Velg farge:";
     }
   } else {
-    document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
+    $("#dinHighscore").innerHTML = localStorage.getItem(
       "highscore",
       score
     );
@@ -187,15 +193,17 @@ function UpdateScore() {
 function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }
-let button = document.getElementById("innstillinger");
-let rules = document.getElementById("controls");
-let highscoreInfo = document.getElementById("leaderboard");
-let infoKnapper = document.getElementById("knapp-container");
+let button = $("#innstillinger");
+let rules = $("#controls");
+let highscoreInfo = $("#leaderboard");
+let infoKnapper = $("#knapp-container");
+let lokalLager = localStorage.getItem("highscore");
+let status = $("#status");
 
-button.onclick = function (event) {
-  document.getElementById("meny").classList.toggle("show");
+button.onclick = function(event) {
+  $("#meny").classList.toggle("show");
 };
-window.onclick = function (event) {
+window.onclick = function(event) {
   if (!event.target.matches(".material-icons")) {
     let nedmeny = document.getElementsByClassName("menyinnhold");
     let i;
@@ -207,8 +215,9 @@ window.onclick = function (event) {
     }
   }
 };
+
 function sjekkData() {
-  let checkBoxRules = document.getElementById("hideRules");
+  let checkBoxRules = $("#hideRules");
   if (checkBoxRules.checked == false) {
     rules.style.visibility = "hidden";
     highscoreInfo.style.visibility = "hidden";
@@ -222,21 +231,21 @@ function sjekkData() {
   }
 }
 
-if (localStorage.getItem("highscore") >= 15) {
-  document.getElementById("status").innerHTML = "Velg farge:";
+if (lokalLager >= 10) {
+  status.innerHTML = "<br>" + "Velg farge:";
 } else {
-  document.getElementById("status").innerHTML =
-    "Få en highscore på 15+ for å låse opp fargevalg!";
+  status.innerHTML =
+    "Få en highscore på 10+ for å låse opp fargevalg!";
 }
 //Custom colors
 
 let colorselected = "rgb(0,255,0)";
 let regnbueModus = false;
-let greenSelect = document.getElementById("green");
-let redSelect = document.getElementById("red");
-let blueSelect = document.getElementById("blue");
-let yellowSelect = document.getElementById("yellow");
-let rainbowSelect = document.getElementById("rainbow");
+let greenSelect = $("#green");
+let redSelect = $("#red");
+let blueSelect = $("#blue");
+let yellowSelect = $("#yellow");
+let rainbowSelect = $("#rainbow");
 
 function setBorderNone() {
   greenSelect.style.borderStyle = "none";
@@ -246,7 +255,7 @@ function setBorderNone() {
   rainbowSelect.style.borderStyle = "none";
 }
 greenSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 15) {
+  if (lokalLager >= 15) {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
     regnbueModus = false;
@@ -255,11 +264,11 @@ greenSelect.onclick = () => {
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    duTrenger15();
+    duTrenger10();
   }
 };
 redSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 15) {
+  if (lokalLager >= 15) {
     colorselected = `red`;
     spiller.farge = "red";
     regnbueModus = false;
@@ -268,12 +277,12 @@ redSelect.onclick = () => {
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    duTrenger15();
+    duTrenger10();
   }
 };
 
 blueSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 15) {
+  if (lokalLager >= 15) {
     colorselected = `blue`;
     spiller.farge = "blue";
     regnbueModus = false;
@@ -282,11 +291,11 @@ blueSelect.onclick = () => {
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    duTrenger15();
+    duTrenger10();
   }
 };
 yellowSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 15) {
+  if (lokalLager >= 15) {
     colorselected = `yellow`;
     spiller.farge = "yellow";
     regnbueModus = false;
@@ -295,33 +304,33 @@ yellowSelect.onclick = () => {
   } else {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
-    duTrenger15();
+    duTrenger10();
   }
 };
 
 rainbowSelect.onclick = () => {
-  if (localStorage.getItem("highscore") >= 20) {
+  if (lokalLager >= 20) {
     regnbueModus = true;
     setBorderNone();
     rainbowSelect.style.border = "2px solid white";
   } else {
     let colorselected = "rgb(0,255,0)";
-    document.getElementById("status").innerHTML =
-      "Du trenger 20+ for regnbuefarge :)";
-    setTimeout(function () {
-      if (localStorage.getItem("highscore") >= 15) {
-        document.getElementById("status").innerHTML = "Velg farge:";
-      } else document.getElementById("status").innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
+    status.innerHTML =
+      "Du trenger 15+ for regnbuefarge :)";
+    setTimeout(function() {
+      if (lokalLager >= 15) {
+        status.innerHTML = "Velg farge:";
+      } else status.innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
     }, 2000);
   }
 };
 
-function duTrenger15() {
-  document.getElementById("status").innerHTML =
-    "Du trenger 15+ i highscore for å bytte farge";
-  setTimeout(function () {
-    if (localStorage.getItem("highscore") >= 15) {
-      document.getElementById("status").innerHTML = "Velg farge:";
-    } else document.getElementById("status").innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
+function duTrenger10() {
+  status.innerHTML =
+    "Du trenger 10+ i highscore for å bytte farge";
+  setTimeout(function() {
+    if (lokalLager >= 15) {
+      status.innerHTML = "Velg farge:";
+    } else status.innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
   }, 2000);
 }
