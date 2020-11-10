@@ -254,7 +254,7 @@ function setBorderNone() {
   rainbowSelect.style.borderStyle = "none";
 }
 greenSelect.onclick = () => {
-  if (lokalLager >= 15) {
+  if (lokalLager >= 10) {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
     regnbueModus = false;
@@ -267,7 +267,7 @@ greenSelect.onclick = () => {
   }
 };
 redSelect.onclick = () => {
-  if (lokalLager >= 15) {
+  if (lokalLager >= 10) {
     colorselected = `red`;
     spiller.farge = "red";
     regnbueModus = false;
@@ -281,7 +281,7 @@ redSelect.onclick = () => {
 };
 
 blueSelect.onclick = () => {
-  if (lokalLager >= 15) {
+  if (lokalLager >= 10) {
     colorselected = `blue`;
     spiller.farge = "blue";
     regnbueModus = false;
@@ -294,7 +294,7 @@ blueSelect.onclick = () => {
   }
 };
 yellowSelect.onclick = () => {
-  if (lokalLager >= 15) {
+  if (lokalLager >= 10) {
     colorselected = `yellow`;
     spiller.farge = "yellow";
     regnbueModus = false;
@@ -308,7 +308,7 @@ yellowSelect.onclick = () => {
 };
 
 rainbowSelect.onclick = () => {
-  if (lokalLager >= 20) {
+  if (lokalLager >= 15) {
     regnbueModus = true;
     setBorderNone();
     rainbowSelect.style.border = "2px solid white";
@@ -317,9 +317,9 @@ rainbowSelect.onclick = () => {
     status.innerHTML =
       "Du trenger 15+ for regnbuefarge :)";
     setTimeout(function() {
-      if (lokalLager >= 15) {
+      if (lokalLager >= 10) {
         status.innerHTML = "Velg farge:";
-      } else status.innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
+      } else status.innerHTML = "Få en highscore på 10+ for å låse opp fargevalg!";
     }, 2000);
   }
 };
@@ -328,8 +328,8 @@ function duTrenger10() {
   status.innerHTML =
     "Du trenger 10+ i highscore for å bytte farge";
   setTimeout(function() {
-    if (lokalLager >= 15) {
+    if (lokalLager >= 10) {
       status.innerHTML = "Velg farge:";
-    } else status.innerHTML = "Få en highscore på 15+ for å låse opp fargevalg!";
+    } else status.innerHTML = "Få en highscore på 10+ for å låse opp fargevalg!";
   }, 2000);
 }
