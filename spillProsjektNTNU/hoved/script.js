@@ -131,6 +131,12 @@ function draw() {
       text(`SCORE: ${score}`, windowWidth / 3.8, windowHeight / 3);
     } else {}
   }
+  if(mode == 3){
+    text(`Om oss`, 200, 200)
+  }
+  if(mode == 4){
+    text(`Prosjekt`, 200, 200)
+  }
   if (keyIsDown(37) || keyIsDown(65)) {
     spiller.x -= 4;
     spiller.stille = false;
@@ -194,6 +200,18 @@ function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }
 
+function spillKlikk(){
+  mode = 0;
+}
+
+function omOssKlikk(){
+  mode = 3;
+}
+
+function prosjektKlikk(){
+  mode = 4;
+}
+
 let button = $("#innstillinger");
 let kontroller = $("#controls");
 let highscoreInfo = $("#leaderboard");
@@ -250,10 +268,10 @@ if (lokalLager >= 10) {
 //Ulike farge-knapper hentes fra index.html
 
 
-let greenSelect = $("#green"); //Grønn knapp 
+let greenSelect = $("#green"); //Grønn knapp
 let redSelect = $("#red"); // Rød Knapp
-let blueSelect = $("#blue"); //Blå Knapp 
-let yellowSelect = $("#yellow"); //Gul Knapp 
+let blueSelect = $("#blue"); //Blå Knapp
+let yellowSelect = $("#yellow"); //Gul Knapp
 let rainbowSelect = $("#rainbow"); //Regnbuefarge Knapp
 
 let colorselected = "rgb(0,255,0)"; //Grønn er default farge
@@ -268,7 +286,7 @@ function setBorderNone() {
   rainbowSelect.style.borderStyle = "none";
 }
 //Etter klikk sjekker denne funksjonen om highscore er over 10
-//Hvis highscore >=10, og man trykker på grønn knapp, vil spill-karakterens farge settes til grønn, 
+//Hvis highscore >=10, og man trykker på grønn knapp, vil spill-karakterens farge settes til grønn,
 //knappen får også en ramme rundt seg, og de forrige valgte fargenr mister ramme.
 greenSelect.onclick = () => {
   if (lokalLager >= 10) {
