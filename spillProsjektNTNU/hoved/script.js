@@ -100,7 +100,6 @@ function draw() {
     drawingContext.shadowOffsetY = 2.5;
     drawingContext.shadowBlur = 3;
     drawingContext.shadowColor = "red";
-
     background(0);
     textFont("VT323");
     textAlign(CENTER);

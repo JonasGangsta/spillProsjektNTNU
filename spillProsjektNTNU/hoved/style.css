@@ -111,6 +111,9 @@ span {
   border-radius: 50%;
   display: inline-block;
 }
+.dot:hover {
+  -webkit-filter: brightness(80%);
+}
 
 .dot:hover {
   -webkit-filter: brightness(80%);
