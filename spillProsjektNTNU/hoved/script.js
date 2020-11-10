@@ -8,7 +8,7 @@ let score = 0;
 let platformer = [];
 let hindere = [];
 let hinderTall = 5;
-let fargeblindmode = 0;
+
 
 function setup() {
   mode = 0;
@@ -173,7 +173,8 @@ $("#dinHighscore").innerHTML = localStorage.getItem(
   "highscore",
   score
 );
-
+//Denne funksjonen oppdaterer highscore informasjonen på siden hvis score er større en summen i local storage.
+//Hvis score < nåværende highscore, vil den nåværende highscore fortsatt vises
 function UpdateScore() {
   if (score > lokalLager) {
     localStorage.setItem("highscore", score);
@@ -192,60 +193,73 @@ function UpdateScore() {
 function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }
+
 let button = $("#innstillinger");
-let rules = $("#controls");
+let kontroller = $("#controls");
 let highscoreInfo = $("#leaderboard");
 let infoKnapper = $("#knapp-container");
 let lokalLager = localStorage.getItem("highscore");
 let status = $("#status");
+let nedmeny = document.getElementsByClassName("menyinnhold");
 
-button.onclick = function(event) {
-  $("#meny").classList.toggle("show");
+//Funksjon som åpner en meny, og lukker den hvis man trykker hvor som helst i vinduet
+
+button.onclick = function(meny) {
+  $("#meny").classList.toggle("vis");
 };
-window.onclick = function(event) {
-  if (!event.target.matches(".material-icons")) {
-    let nedmeny = document.getElementsByClassName("menyinnhold");
-    let i;
-    for (i = 0; i < nedmeny.length; i++) {
-      let openMeny = nedmeny[i];
-      if (openMeny.classList.contains("show")) {
-        openMeny.classList.remove("show");
+window.onclick = function(meny) {
+  if (!meny.target.matches(".material-icons")) {
+  //Innhold i meny
+    let innhold = nedmeny
+    let index;
+
+    for (index = 0; index < innhold.length; index++) {
+  //Viser meny
+      let openMeny = innhold[indx];
+      if (openMeny.classList.contains("vis")) {
+        openMeny.classList.remove("vis");
       }
     }
   }
 };
+//Funksjon som sjekker om checkbox er checked. Hvis den er checked så vises elementet highscoreinfo og rules,
+//hvis ikke så gjemmes disse elementene
 
 function sjekkData() {
-  let checkBoxRules = $("#hideRules");
-  if (checkBoxRules.checked == false) {
-    rules.style.visibility = "hidden";
+  let checkBoxKontroller = $("#hideKontroller");
+  if (checkBoxKontroller.checked == false) {
+    kontroller.style.visibility = "hidden";
     highscoreInfo.style.visibility = "hidden";
 
     infoKnapper.style.visibility = "hidden";
   } else {
-    rules.style.visibility = "visible";
+    kontroller.style.visibility = "visible";
     highscoreInfo.style.visibility = "visible";
 
     infoKnapper.style.visibility = "visible";
   }
 }
-
+//Hvis highscore er større en 10 poeng, så låses fargevalg opp. Derfor vises "Velg farge:"
 if (lokalLager >= 10) {
   status.innerHTML = "<br>" + "Velg farge:";
 } else {
   status.innerHTML =
     "Få en highscore på 10+ for å låse opp fargevalg!";
 }
-//Custom colors
 
-let colorselected = "rgb(0,255,0)";
-let regnbueModus = false;
-let greenSelect = $("#green");
-let redSelect = $("#red");
-let blueSelect = $("#blue");
-let yellowSelect = $("#yellow");
-let rainbowSelect = $("#rainbow");
+//Ulike farge-knapper hentes fra index.html
 
+
+let greenSelect = $("#green"); //Grønn knapp 
+let redSelect = $("#red"); // Rød Knapp
+let blueSelect = $("#blue"); //Blå Knapp 
+let yellowSelect = $("#yellow"); //Gul Knapp 
+let rainbowSelect = $("#rainbow"); //Regnbuefarge Knapp
+
+let colorselected = "rgb(0,255,0)"; //Grønn er default farge
+let regnbueModus = false; //Regnbuemodus er slått av
+
+//Denne funksjonen fjerner alle rammer fra select knappene
 function setBorderNone() {
   greenSelect.style.borderStyle = "none";
   redSelect.style.borderStyle = "none";
@@ -253,6 +267,9 @@ function setBorderNone() {
   yellowSelect.style.borderStyle = "none";
   rainbowSelect.style.borderStyle = "none";
 }
+//Etter klikk sjekker denne funksjonen om highscore er over 10
+//Hvis highscore >=10, og man trykker på grønn knapp, vil spill-karakterens farge settes til grønn, 
+//knappen får også en ramme rundt seg, og de forrige valgte fargenr mister ramme.
 greenSelect.onclick = () => {
   if (lokalLager >= 10) {
     colorselected = `rgb(0,255,0)`;
@@ -266,6 +283,7 @@ greenSelect.onclick = () => {
     duTrenger10();
   }
 };
+//For rød farge
 redSelect.onclick = () => {
   if (lokalLager >= 10) {
     colorselected = `red`;
@@ -279,7 +297,7 @@ redSelect.onclick = () => {
     duTrenger10();
   }
 };
-
+//For blå farge
 blueSelect.onclick = () => {
   if (lokalLager >= 10) {
     colorselected = `blue`;
@@ -293,6 +311,7 @@ blueSelect.onclick = () => {
     duTrenger10();
   }
 };
+//For gul farge
 yellowSelect.onclick = () => {
   if (lokalLager >= 10) {
     colorselected = `yellow`;
@@ -306,7 +325,10 @@ yellowSelect.onclick = () => {
     duTrenger10();
   }
 };
-
+//
+//Denne funksjonen setter regnbueModus til true, som trigger if setning i spiller.js
+//Den gir også regnbueknappen ramme, og fjerner andre rammer. Men aller først sjekker den om
+//highscoren til brukeren er >=15
 rainbowSelect.onclick = () => {
   if (lokalLager >= 15) {
     regnbueModus = true;

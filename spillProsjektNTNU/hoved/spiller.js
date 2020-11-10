@@ -9,7 +9,7 @@ class Spiller {
     this.retning = 0;
     this.gravity = 0.2;
     this.gravitySpeed = 0;
-    this.armer = 0;
+    this.armer = 0; //Armer = 0 når karakteren står på bakken. Hvis brukeren hopper opp eller ned, vil denne verdien øke. Resultatet blir at armene løftes.
     this.stille = true;
     this.motVenstre = false;
     this.motHoyre = false;
@@ -17,6 +17,7 @@ class Spiller {
   }
 
   tegn() {
+    //Setter spillerens farge til tilfeldige farger hvis regnbueModus = true
     if (regnbueModus === true) {
       if (frameCount % 20 < 1) {
         this.randomColor =
@@ -24,8 +25,12 @@ class Spiller {
       }
       this.farge = this.randomColor;
     }
-    //skygge
+
+    //Modell som tegnes hvis karakteren står stille
+
+
     if (this.stille == true) {
+      //Skygget til karakteren har samme farge
       drawingContext.shadowColor = this.farge;
 
       //Farge for figur
@@ -64,7 +69,11 @@ class Spiller {
         0,
         PI
       );
-    } else if (this.motVenstre == true) {
+    } 
+
+    //Karakter som tegnes hvis karakteren beveger seg mot venstre
+    
+    else if (this.motVenstre == true) {
       drawingContext.shadowColor = this.farge;
 
       //Farge for figur
@@ -99,7 +108,7 @@ class Spiller {
         this.h / 2
       );
       //Hode
-      fill("#F1C27D");
+      fill("#F1C27D"); //Farge for ansikt
       ellipse(this.x + this.w / 2, this.y - this.h / 6, this.w, this.w);
       fill(this.svart);
       //Øyne
@@ -119,7 +128,11 @@ class Spiller {
         0,
         PI
       );
-    } else if (this.motHoyre == true) {
+    } 
+    
+    //Karakter som tegnes hvis karakteren beveger seg mot høyre
+
+    else if (this.motHoyre == true) {
       drawingContext.shadowColor = this.farge;
 
       //Farge for figur
@@ -223,7 +236,7 @@ class Spiller {
     if (spiller.kollisjon()) {
       spiller.gravitySpeed = -spiller.h / 6.14;
       spiller.y = spiller.y - spiller.h / 2.1;
-      spiller.armer = -15;
+      spiller.armer = -15; //Løfter armene. Setter armverdien til -15. Etter 700 millisekunder settes armverdien til 0 igjen og armene senkes.
       setTimeout(function() {
         spiller.armer = 0;
       }, 700);
@@ -233,7 +246,7 @@ class Spiller {
     if (spiller.kollisjon()) {
       spiller.gravitySpeed = 2;
       spiller.y += 16;
-      spiller.armer = -15;
+      spiller.armer = -15; //Løfter armene. Setter armverdien til -15. Etter 400 millisekunder settes armverdien til 0 igjen og armene senkes.
       setTimeout(function() {
         spiller.armer = 0;
       }, 400);
