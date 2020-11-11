@@ -9,8 +9,15 @@ let score = 0;
 let platformer = [];
 let hindere = [];
 let hinderTall = 5;
+let rohitImg;
+let oskarImg
 
+function preload(){
+  rohitImg = loadImage(`https://i.imgur.com/H70l18L.jpg`);
+  oskarImg = loadImage(`https://i.imgur.com/IWPO3jQ.jpg`);
+  bendikImg = loadImage(`https://i.imgur.com/AUSEom3.jpg`);
 
+}
 //Setup funksjonen til p5js kjører og lager et canvas
 function setup() {
   mode = 0; //Mode = 0 sier at spillet ikke skal startes
@@ -133,7 +140,10 @@ function draw() {
     } else {}
   }
   if(mode == 3){ //Hvis mode er 3 skal om oss siden vises
-    text(`Om oss`, 200, 200)
+    drawingContext.shadowColor = `black`;
+    image(rohitImg, width/50, height/50, width/5, height/2);
+    image(oskarImg, width/4, height/50, width/5, height/2);
+    image(bendikImg, width/2.1, height/50, width/5, height/2);
   }
   if(mode == 4){ //Hvis mode er 4 skal prosjekt siden vises
     textAlign(LEFT);
