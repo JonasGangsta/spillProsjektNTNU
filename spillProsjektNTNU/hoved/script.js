@@ -132,11 +132,37 @@ function draw() {
       text(`SCORE: ${score}`, windowWidth / 3.8, windowHeight / 3);
     } else {}
   }
-  if(mode == 3){
+  if(mode == 3){ //Hvis mode er 3 skal om oss siden vises
     text(`Om oss`, 200, 200)
   }
-  if(mode == 4){
-    text(`Prosjekt`, 200, 200)
+  if(mode == 4){ //Hvis mode er 4 skal prosjekt siden vises
+    textAlign(LEFT);
+    textSize(windowWidth/70);
+    fill(`maroon`);
+    drawingContext.shadowOffsetX = -1;
+    drawingContext.shadowOffsetY = 1;
+    drawingContext.shadowBlur = 1;
+    drawingContext.shadowColor = "red";
+    text(`I faget Webteknologi og teamarbeid på linjen Digital forretningsutvikling ved NTNU`, 30,30);
+    text(`Trondheim, har vi fått en prosjektoppgave hvor vi skal utvikle et spill. `, 30,60);
+
+    text(`Som en gruppe måtte vi først finne ut hva spillet skulle handle om. Diskusjonen `, 30,110);
+    text(`angående handlingen forekom midt under fadderuken, og historier derfra ble delt `, 30,140);
+    text(`mellom gruppen. Blant historiene var det spesielt en ting som gjentok seg, nemlig at `, 30,170);
+    text(`kveldene endte med nattmat. Vi bestemte oss for at spillet skulle handle om nettopp `, 30,200);
+    text(`dette, og at det skulle rettes mot festglade mennesker som er glade i nattmat.`, 30,230);
+
+    text(`Gruppen bestemte seg deretter for å ha et plattformbasert arkadespill etter å ha studert`, 30,280);
+    text(`blant annet «Super Mario» og «Space invaders». Vi valgte et plattformbasert spill`, 30,310);
+    text(`ettersom det passet gruppens erfaring innen koding. Etter at handlingen og hvilket type`, 30,340);
+    text(`spill vi skulle ha ble fastsatt, begynte prosessen for å utvikle «Nattmat»! `, 30,370);
+
+    text(`Prøv ut spillet ved å trykke på «Spill»!   `, 30,420);
+    text(`Trykk på «Om oss» om du vil vite mer om gruppen!  `, 30,450);
+
+
+
+
   }
   if (keyIsDown(37) || keyIsDown(65)) {
     spiller.x -= 4;
@@ -207,7 +233,7 @@ function windowResized() {
 }
 
 function spillKlikk(){
-  mode = 0;
+  mode = 1;
 }
 
 function omOssKlikk(){

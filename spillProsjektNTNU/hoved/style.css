@@ -49,8 +49,8 @@ body {
 }
 
 #knapp-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: grid;  /* Lager et grid */
+  grid-template-columns: 1fr 1fr 1fr; /* Gridet skal deles opp i 3 deler */
   grid-gap: 3%;
   margin-left: 28%;
   margin-right: 30%;
