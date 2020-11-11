@@ -235,16 +235,33 @@ function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }
 
+document.getElementById("spillKnapp").style.color="red"
+
 function spillKlikk(){
   mode = 1;
+  resetKlikkFarge();
+  document.getElementById("spillKnapp").style.color="red"
+  
 }
 
 function omOssKlikk(){
   mode = 3;
+  resetKlikkFarge();
+  document.getElementById("omOssKnapp").style.color="red"
 }
 
 function prosjektKlikk(){
   mode = 4;
+  resetKlikkFarge();
+  document.getElementById("prosjektKnapp").style.color="red";
+  
+}
+
+function resetKlikkFarge(){
+  document.getElementById("omOssKnapp").style.color="rgb(190, 5, 5)"
+  document.getElementById("spillKnapp").style.color="rgb(190, 5, 5)"
+  document.getElementById("prosjektKnapp").style.color="rgb(190, 5, 5)"
+
 }
 
 let button = $("#innstillinger");
