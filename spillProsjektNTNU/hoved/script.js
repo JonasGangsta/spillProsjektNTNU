@@ -16,6 +16,7 @@ function preload(){
   rohitImg = loadImage(`https://i.imgur.com/H70l18L.jpg`);
   oskarImg = loadImage(`https://i.imgur.com/IWPO3jQ.jpg`);
   bendikImg = loadImage(`https://i.imgur.com/AUSEom3.jpg`);
+  jonasImg = loadImage(`https://i.imgur.com/8n1DUwS.jpg`);
 
 }
 //Setup funksjonen til p5js kjører og lager et canvas
@@ -141,9 +142,29 @@ function draw() {
   }
   if(mode == 3){ //Hvis mode er 3 skal om oss siden vises
     drawingContext.shadowColor = `black`;
-    image(rohitImg, width/50, height/50, width/5, height/2);
-    image(oskarImg, width/4, height/50, width/5, height/2);
-    image(bendikImg, width/2.1, height/50, width/5, height/2);
+    image(bendikImg, width/30, height/50, width/5, height/2);
+    image(rohitImg, width/3.6, height/50, width/5, height/2);
+    image(oskarImg, width/1.9, height/50, width/5, height/2);
+    image(jonasImg, width/1.3, height/50, width/5.5, height/2);
+    textSize(windowWidth/35);
+    text(`Bendik`, width/7.5, height/1.6);
+    textSize(windowWidth/55);
+    text(`Prosjektleder`, width/7.5, height/1.4);
+
+    textSize(windowWidth/35);
+    text(`Rohit`, width/2.65, height/1.6);
+    textSize(windowWidth/55);
+    text(`Rolle?`, width/2.65, height/1.4);
+
+    textSize(windowWidth/35);
+    text(`Oskar`, width/1.58, height/1.6);
+    textSize(windowWidth/55);
+    text(`Programmerer`, width/1.58, height/1.4);
+
+    textSize(windowWidth/35);
+    text(`Jonas`, width/1.16, height/1.6);
+    textSize(windowWidth/55);
+    text(`Programmerer`, width/1.16, height/1.4);
   }
   if(mode == 4){ //Hvis mode er 4 skal prosjekt siden vises
     textAlign(LEFT);
@@ -251,7 +272,7 @@ function spillKlikk(){
   mode = 1;
   resetKlikkFarge();
   document.getElementById("spillKnapp").style.color="red"
-  
+
 }
 
 function omOssKlikk(){
@@ -264,7 +285,7 @@ function prosjektKlikk(){
   mode = 4;
   resetKlikkFarge();
   document.getElementById("prosjektKnapp").style.color="red";
-  
+
 }
 
 function resetKlikkFarge(){
