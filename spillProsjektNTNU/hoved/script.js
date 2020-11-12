@@ -77,7 +77,7 @@ function draw() {
       fill(`Maroon`); //Stil på teksten
       textFont("VT323");
       textAlign(CENTER);
-      text(`CLICK ENTER TO START`, windowWidth / 3.8, windowHeight / 3); //Lager teksten
+      text(`TRYKK ENTER FOR Å STARTE`, windowWidth / 3.8, windowHeight / 3); //Lager teksten
     } else { //Hvis det ikke vises tekst skal det bare være svart bakgrunn alene
       background(0);
     }
@@ -141,30 +141,59 @@ function draw() {
     } else {}
   }
   if(mode == 3){ //Hvis mode er 3 skal om oss siden vises
+    drawingContext.shadowOffsetX = -1;
+    drawingContext.shadowOffsetY = 1;
+    drawingContext.shadowBlur = 1;
     drawingContext.shadowColor = `black`;
     image(bendikImg, width/30, height/50, width/5, height/2); //p5js funksjon image() for å vise bilder
     image(rohitImg, width/3.6, height/50, width/5, height/2);
     image(oskarImg, width/1.9, height/50, width/5, height/2);
     image(jonasImg, width/1.3, height/50, width/5.5, height/2);
+    textAlign(CENTER);
     textSize(windowWidth/35);
+    fill(`white`);
+    drawingContext.shadowOffsetX = -1;
+    drawingContext.shadowOffsetY = 1;
+    drawingContext.shadowBlur = 1;
+    drawingContext.shadowColor = `black`;
     text(`Bendik`, width/7.5, height/1.6);
     textSize(windowWidth/55);
+    fill(`yellow`);
     text(`Prosjektleder`, width/7.5, height/1.4);
+    fill(`white`);
+    textSize(windowWidth/70);
+    text(`bendikoj@stud.ntnu.no`, width/7.5, height/1.25);
 
     textSize(windowWidth/35);
     text(`Rohit`, width/2.65, height/1.6);
     textSize(windowWidth/55);
-    text(`Rolle?`, width/2.65, height/1.4);
+    fill(`rgb(50,50,255)`);
+    text(`Rapportsjef`, width/2.65, height/1.4);
+    fill(`white`);
+    textSize(windowWidth/70);
+    text(`rohitb@stud.ntnu.no`, width/2.65, height/1.25);
 
     textSize(windowWidth/35);
     text(`Oskar`, width/1.58, height/1.6);
     textSize(windowWidth/55);
+    fill(`rgb(255,100,100)`);
     text(`Programmerer`, width/1.58, height/1.4);
+    fill(`white`);
+    textSize(windowWidth/70);
+    text(`oskarlh@stud.ntnu.no`, width/1.58, height/1.25);
 
     textSize(windowWidth/35);
     text(`Jonas`, width/1.16, height/1.6);
     textSize(windowWidth/55);
+    fill(`rgb(255,100,100)`);
     text(`Programmerer`, width/1.16, height/1.4);
+    fill(`white`);
+    textSize(windowWidth/70);
+    text(`jonasa@stud.ntnu.no`, width/1.16, height/1.25);
+
+    fill(`rgb(0,255,0)`);
+    textSize(windowWidth/30);
+    text(`Gruppe 6`, width/2, height/1.075);
   }
   if(mode == 4){ //Hvis mode er 4 skal prosjekt siden vises
     textAlign(LEFT);
@@ -189,10 +218,9 @@ function draw() {
     text(`spill vi skulle ha ble fastsatt, begynte prosessen for å utvikle «Nattmat»! `, 30,400);
     textSize(windowWidth/40);
     fill(`rgb(0,255,0)`);
-    text(`Sjekk ut spillet ved å trykke på «Spill»!   `, 30,450);
+    text(`Sjekk ut spillet ved å trykke på «Spill»!   `, 30,460);
     textSize(windowWidth/70);
-    fill(`white`);
-    text(`Trykk på «Om oss» hvis du vil vite mer om gruppe 6!  `, 30,490);
+    
 
 
 
@@ -272,6 +300,7 @@ function spillKlikk(){
   mode = 1;
   resetKlikkFarge();
   document.getElementById("spillKnapp").style.color="red"
+  document.getElementById("spillKnapp").css({'pointer-events': 'none'})
 
 }
 
@@ -279,12 +308,14 @@ function omOssKlikk(){
   mode = 3;
   resetKlikkFarge();
   document.getElementById("omOssKnapp").style.color="red"
+  document.getElementById("omOssKnapp").css({'pointer-events': 'none'})
 }
 
 function prosjektKlikk(){
   mode = 4;
   resetKlikkFarge();
   document.getElementById("prosjektKnapp").style.color="red";
+  document.getElementById("prosjektKnapp").css({'pointer-events': 'none'})
 
 }
 
@@ -298,7 +329,6 @@ function resetKlikkFarge(){
 let button = $("#innstillinger");
 let kontroller = $("#controls");
 let highscoreInfo = $("#leaderboard");
-let infoKnapper = $("#knapp-container");
 let lokalLager = localStorage.getItem("highscore");
 let status = $("#status");
 let nedmeny = document.getElementsByClassName("menyinnhold");
@@ -332,7 +362,7 @@ function sjekkData() {
     kontroller.style.visibility = "hidden";
     highscoreInfo.style.visibility = "hidden";
 
-    infoKnapper.style.visibility = "hidden";
+  
   } else {
     kontroller.style.visibility = "visible";
     highscoreInfo.style.visibility = "visible";
