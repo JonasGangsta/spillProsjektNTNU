@@ -189,7 +189,7 @@ function draw() {
     text(`Programmerer`, width/1.16, height/1.4);
     fill(`white`);
     textSize(windowWidth/70);
-    text(`jonasa@stud.ntnu.no`, width/1.16, height/1.25);
+    text(`jonasgan@stud.ntnu.no`, width/1.16, height/1.25);
 
     fill(`rgb(0,255,0)`);
     textSize(windowWidth/30);
@@ -220,7 +220,7 @@ function draw() {
     fill(`rgb(0,255,0)`);
     text(`Sjekk ut spillet ved å trykke på «Spill»!   `, 30,460);
     textSize(windowWidth/70);
-    
+
 
 
 
@@ -362,7 +362,7 @@ function sjekkData() {
     kontroller.style.visibility = "hidden";
     highscoreInfo.style.visibility = "hidden";
 
-  
+
   } else {
     kontroller.style.visibility = "visible";
     highscoreInfo.style.visibility = "visible";
