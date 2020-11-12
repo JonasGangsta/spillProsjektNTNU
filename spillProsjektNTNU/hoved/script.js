@@ -280,7 +280,7 @@ function updateScore() {
   if (score > localStorage.getItem("highscore")) {
     localStorage.setItem("highscore", score);
     document.getElementById("dinHighscore").innerHTML = score;
-    if (score >= 20) {
+    if (score >= 10) {
       document.getElementById("status").innerHTML = "Velg farge:";
     }
   } else {
@@ -296,37 +296,26 @@ document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
   score
 );
 
-function UpdateScore() {
-  if (score > localStorage.getItem("highscore")) {
-    localStorage.setItem("highscore", score);
-    document.getElementById("dinHighscore").innerHTML = score;
-    if (score >= 10) {
-      document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
-    }
-  } else {
-    document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
-      "highscore",
-      score
-    );
-  }
-}
+
 
 function windowResized() {
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5);
 }
 
-document.getElementById("spillKnapp").style.color="red"
+//Setter fargen til spillknappen til rød fordi den er det første man kommer inn på
+document.getElementById("spillKnapp").style.color="red";
 
+//Setter om oss/prosjekt/spill knappens farge til rød når den blir trykket, og de andre til en annen rødfarge. Tilbakemelding
 function spillKlikk(){
   mode = 1;
   resetKlikkFarge();
-  document.getElementById("spillKnapp").style.color="red"
+  document.getElementById("spillKnapp").style.color="red";
 }
 
 function omOssKlikk(){
   mode = 3;
   resetKlikkFarge();
-  document.getElementById("omOssKnapp").style.color="red"
+  document.getElementById("omOssKnapp").style.color="red";
 }
 
 function prosjektKlikk(){
@@ -335,56 +324,65 @@ function prosjektKlikk(){
   document.getElementById("prosjektKnapp").style.color="red";
 
 }
-
+//Setter alle fargene til "rgb(190, 5, 5)"
 function resetKlikkFarge(){
-  document.getElementById("omOssKnapp").style.color="rgb(190, 5, 5)"
-  document.getElementById("spillKnapp").style.color="rgb(190, 5, 5)"
-  document.getElementById("prosjektKnapp").style.color="rgb(190, 5, 5)"
+  document.getElementById("omOssKnapp").style.color="rgb(190, 5, 5)";
+  document.getElementById("spillKnapp").style.color="rgb(190, 5, 5)";
+  document.getElementById("prosjektKnapp").style.color="rgb(190, 5, 5)";
 
 }
 
 let button = document.getElementById("innstillinger");
+let kontroller = $("#controls");
 let rules = document.getElementById("controls");
 let highscoreInfo = document.getElementById("leaderboard");
 let infoKnapper = document.getElementById("knapp-container");
+let nedmeny = document.getElementsByClassName("menyinnhold");
 
-button.onclick = function (event) {
-  document.getElementById("meny").classList.toggle("show");
+//Funksjon som åpner en meny, og lukker den hvis man trykker hvor som helst i vinduet
+
+button.onclick = function(meny) {
+  $("#meny").classList.toggle("vis");
 };
-window.onclick = function (event) {
-  if (!event.target.matches(".material-icons")) {
-    let nedmeny = document.getElementsByClassName("menyinnhold");
-    let i;
-    for (i = 0; i < nedmeny.length; i++) {
-      let openMeny = nedmeny[i];
-      if (openMeny.classList.contains("show")) {
-        openMeny.classList.remove("show");
+window.onclick = function(meny) {
+  if (!meny.target.matches(".material-icons")) {
+  //Innhold i meny
+    let innhold = nedmeny
+    let index;
+
+    for (index = 0; index < innhold.length; index++) {
+  //Viser meny
+      let openMeny = innhold[index];
+      if (openMeny.classList.contains("vis")) {
+        openMeny.classList.remove("vis");
       }
     }
   }
 };
+//Funksjon som sjekker om checkbox er checked. Hvis den er checked så vises elementet highscoreinfo og rules,
+//hvis ikke så gjemmes disse elementene
+
 function sjekkData() {
-  let checkBoxRules = document.getElementById("hideRules");
-  if (checkBoxRules.checked == false) {
-    rules.style.visibility = "hidden";
+  let checkBoxKontroller = $("#hideKontroller");
+  if (checkBoxKontroller.checked == false) {
+    kontroller.style.visibility = "hidden";
     highscoreInfo.style.visibility = "hidden";
 
     infoKnapper.style.visibility = "hidden";
   } else {
-    rules.style.visibility = "visible";
+    kontroller.style.visibility = "visible";
     highscoreInfo.style.visibility = "visible";
 
     infoKnapper.style.visibility = "visible";
   }
 }
-
 if (localStorage.getItem("highscore") >= 10) {
   document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
 } else {
   document.getElementById("status").innerHTML =
     "Få en highscore på 10+ for å låse opp fargevalg!";
 }
-//Custom colors
+//forskjellige fargeknapper
 
 let colorselected = "rgb(0,255,0)";
 let regnbueModus = false;
@@ -394,6 +392,7 @@ let blueSelect = document.getElementById("blue");
 let yellowSelect = document.getElementById("yellow");
 let rainbowSelect = document.getElementById("rainbow");
 
+//setter rammen til alle knapper til none
 function setBorderNone() {
   greenSelect.style.borderStyle = "none";
   redSelect.style.borderStyle = "none";
@@ -401,6 +400,7 @@ function setBorderNone() {
   yellowSelect.style.borderStyle = "none";
   rainbowSelect.style.borderStyle = "none";
 }
+//funksjonene under endrer fargen til spilleren hvis highscore er større enn ti, eller gir tilbakemelding hvis man ikke har nok poeng
 greenSelect.onclick = () => {
   if (localStorage.getItem("highscore") >= 10) {
     colorselected = `rgb(0,255,0)`;
@@ -454,7 +454,8 @@ yellowSelect.onclick = () => {
     duTrenger10();
   }
 };
-
+//Regnbuefarge, hvis highscore er større enn 15 trigges en if setning i spiller.js som skifter fargen til spilleren flere ganger i sekundet
+//hvis highscore er under 15, vil brukeren få tilbakemelding
 rainbowSelect.onclick = () => {
   if (localStorage.getItem("highscore") >= 15) {
     regnbueModus = true;
@@ -471,7 +472,7 @@ rainbowSelect.onclick = () => {
     }, 2000);
   }
 };
-
+//tilbakemelding til brukeren hvis highscore er under 10
 function duTrenger10() {
   document.getElementById("status").innerHTML =
     "Du trenger 10+ i highscore for å bytte farge";
