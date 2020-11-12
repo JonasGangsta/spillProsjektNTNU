@@ -329,7 +329,6 @@ function resetKlikkFarge(){
 let button = $("#innstillinger");
 let kontroller = $("#controls");
 let highscoreInfo = $("#leaderboard");
-let infoKnapper = $("#knapp-container");
 let lokalLager = localStorage.getItem("highscore");
 let status = $("#status");
 let nedmeny = document.getElementsByClassName("menyinnhold");
@@ -363,7 +362,7 @@ function sjekkData() {
     kontroller.style.visibility = "hidden";
     highscoreInfo.style.visibility = "hidden";
 
-    infoKnapper.style.visibility = "hidden";
+  
   } else {
     kontroller.style.visibility = "visible";
     highscoreInfo.style.visibility = "visible";
