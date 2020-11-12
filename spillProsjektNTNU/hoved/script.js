@@ -1,5 +1,5 @@
 // Deklarerer variabler
-const $ = document.querySelector.bind(document);
+const $ = document.querySelector.bind(document); //Gjør at man kan skrive $ istedenfor document.querySelector
 const game = $("#game");
 const btnContainer = $(".btnContainer");
 let mode;
