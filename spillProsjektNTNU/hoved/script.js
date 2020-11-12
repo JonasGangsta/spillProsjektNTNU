@@ -12,7 +12,7 @@ let hinderTall = 5;
 let rohitImg;
 let oskarImg
 
-function preload(){
+function preload(){  //Laster inn bildene vi skal bruke før siden lastes inn
   rohitImg = loadImage(`https://i.imgur.com/H70l18L.jpg`);
   oskarImg = loadImage(`https://i.imgur.com/IWPO3jQ.jpg`);
   bendikImg = loadImage(`https://i.imgur.com/AUSEom3.jpg`);
@@ -142,7 +142,7 @@ function draw() {
   }
   if(mode == 3){ //Hvis mode er 3 skal om oss siden vises
     drawingContext.shadowColor = `black`;
-    image(bendikImg, width/30, height/50, width/5, height/2);
+    image(bendikImg, width/30, height/50, width/5, height/2); //p5js funksjon image() for å vise bilder
     image(rohitImg, width/3.6, height/50, width/5, height/2);
     image(oskarImg, width/1.9, height/50, width/5, height/2);
     image(jonasImg, width/1.3, height/50, width/5.5, height/2);
