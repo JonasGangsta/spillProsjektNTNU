@@ -269,21 +269,42 @@ function windowResized() { //P5js funksjon som kjøres når størrelsen på vind
   resizeCanvas(windowWidth / 1.9, windowHeight / 1.5); //Endrer størrelsen på canvaset
 }
 
-$("#dinHighscore").innerHTML = localStorage.getItem(
+document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
   "highscore",
   score
 );
+
 //Denne funksjonen oppdaterer highscore informasjonen på siden hvis score er større en summen i local storage.
 //Hvis score < nåværende highscore, vil den nåværende highscore fortsatt vises
 function updateScore() {
-  if (score > lokalLager) {
+  if (score > localStorage.getItem("highscore")) {
     localStorage.setItem("highscore", score);
-    $("#dinHighscore").innerHTML = score;
-    if (score >= 10) {
-      $("#status").innerHTML = "<br>" + "Velg farge:";
+    document.getElementById("dinHighscore").innerHTML = score;
+    if (score >= 20) {
+      document.getElementById("status").innerHTML = "Velg farge:";
     }
   } else {
-    $("#dinHighscore").innerHTML = localStorage.getItem(
+    document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
+      "highscore",
+      score
+    );
+  }
+}
+
+document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
+  "highscore",
+  score
+);
+
+function UpdateScore() {
+  if (score > localStorage.getItem("highscore")) {
+    localStorage.setItem("highscore", score);
+    document.getElementById("dinHighscore").innerHTML = score;
+    if (score >= 10) {
+      document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
+    }
+  } else {
+    document.getElementById("dinHighscore").innerHTML = localStorage.getItem(
       "highscore",
       score
     );
@@ -300,22 +321,18 @@ function spillKlikk(){
   mode = 1;
   resetKlikkFarge();
   document.getElementById("spillKnapp").style.color="red"
-  document.getElementById("spillKnapp").css({'pointer-events': 'none'})
-
 }
 
 function omOssKlikk(){
   mode = 3;
   resetKlikkFarge();
   document.getElementById("omOssKnapp").style.color="red"
-  document.getElementById("omOssKnapp").css({'pointer-events': 'none'})
 }
 
 function prosjektKlikk(){
   mode = 4;
   resetKlikkFarge();
   document.getElementById("prosjektKnapp").style.color="red";
-  document.getElementById("prosjektKnapp").css({'pointer-events': 'none'})
 
 }
 
@@ -326,71 +343,57 @@ function resetKlikkFarge(){
 
 }
 
-let button = $("#innstillinger");
-let kontroller = $("#controls");
-let highscoreInfo = $("#leaderboard");
-let lokalLager = localStorage.getItem("highscore");
-let status = $("#status");
-let nedmeny = document.getElementsByClassName("menyinnhold");
+let button = document.getElementById("innstillinger");
+let rules = document.getElementById("controls");
+let highscoreInfo = document.getElementById("leaderboard");
+let infoKnapper = document.getElementById("knapp-container");
 
-//Funksjon som åpner en meny, og lukker den hvis man trykker hvor som helst i vinduet
-
-button.onclick = function(meny) {
-  $("#meny").classList.toggle("vis");
+button.onclick = function (event) {
+  document.getElementById("meny").classList.toggle("show");
 };
-window.onclick = function(meny) {
-  if (!meny.target.matches(".material-icons")) {
-  //Innhold i meny
-    let innhold = nedmeny
-    let index;
-
-    for (index = 0; index < innhold.length; index++) {
-  //Viser meny
-      let openMeny = innhold[index];
-      if (openMeny.classList.contains("vis")) {
-        openMeny.classList.remove("vis");
+window.onclick = function (event) {
+  if (!event.target.matches(".material-icons")) {
+    let nedmeny = document.getElementsByClassName("menyinnhold");
+    let i;
+    for (i = 0; i < nedmeny.length; i++) {
+      let openMeny = nedmeny[i];
+      if (openMeny.classList.contains("show")) {
+        openMeny.classList.remove("show");
       }
     }
   }
 };
-//Funksjon som sjekker om checkbox er checked. Hvis den er checked så vises elementet highscoreinfo og rules,
-//hvis ikke så gjemmes disse elementene
-
 function sjekkData() {
-  let checkBoxKontroller = $("#hideKontroller");
-  if (checkBoxKontroller.checked == false) {
-    kontroller.style.visibility = "hidden";
+  let checkBoxRules = document.getElementById("hideRules");
+  if (checkBoxRules.checked == false) {
+    rules.style.visibility = "hidden";
     highscoreInfo.style.visibility = "hidden";
 
-
+    infoKnapper.style.visibility = "hidden";
   } else {
-    kontroller.style.visibility = "visible";
+    rules.style.visibility = "visible";
     highscoreInfo.style.visibility = "visible";
 
     infoKnapper.style.visibility = "visible";
   }
 }
-//Hvis highscore er større en 10 poeng, så låses fargevalg opp. Derfor vises "Velg farge:"
-if (lokalLager >= 10) {
-  status.innerHTML = "<br>" + "Velg farge:";
+
+if (localStorage.getItem("highscore") >= 10) {
+  document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
 } else {
-  status.innerHTML =
+  document.getElementById("status").innerHTML =
     "Få en highscore på 10+ for å låse opp fargevalg!";
 }
+//Custom colors
 
-//Ulike farge-knapper hentes fra index.html
+let colorselected = "rgb(0,255,0)";
+let regnbueModus = false;
+let greenSelect = document.getElementById("green");
+let redSelect = document.getElementById("red");
+let blueSelect = document.getElementById("blue");
+let yellowSelect = document.getElementById("yellow");
+let rainbowSelect = document.getElementById("rainbow");
 
-
-let greenSelect = $("#green"); //Grønn knapp
-let redSelect = $("#red"); // Rød Knapp
-let blueSelect = $("#blue"); //Blå Knapp
-let yellowSelect = $("#yellow"); //Gul Knapp
-let rainbowSelect = $("#rainbow"); //Regnbuefarge Knapp
-
-let colorselected = "rgb(0,255,0)"; //Grønn er default farge
-let regnbueModus = false; //Regnbuemodus er slått av
-
-//Denne funksjonen fjerner alle rammer fra select knappene
 function setBorderNone() {
   greenSelect.style.borderStyle = "none";
   redSelect.style.borderStyle = "none";
@@ -398,11 +401,8 @@ function setBorderNone() {
   yellowSelect.style.borderStyle = "none";
   rainbowSelect.style.borderStyle = "none";
 }
-//Etter klikk sjekker denne funksjonen om highscore er over 10
-//Hvis highscore >=10, og man trykker på grønn knapp, vil spill-karakterens farge settes til grønn,
-//knappen får også en ramme rundt seg, og de forrige valgte fargenr mister ramme.
 greenSelect.onclick = () => {
-  if (lokalLager >= 10) {
+  if (localStorage.getItem("highscore") >= 10) {
     colorselected = `rgb(0,255,0)`;
     spiller.farge = "rgb(0,255,0)";
     regnbueModus = false;
@@ -414,9 +414,8 @@ greenSelect.onclick = () => {
     duTrenger10();
   }
 };
-//For rød farge
 redSelect.onclick = () => {
-  if (lokalLager >= 10) {
+  if (localStorage.getItem("highscore") >= 10) {
     colorselected = `red`;
     spiller.farge = "red";
     regnbueModus = false;
@@ -428,9 +427,9 @@ redSelect.onclick = () => {
     duTrenger10();
   }
 };
-//For blå farge
+
 blueSelect.onclick = () => {
-  if (lokalLager >= 10) {
+  if (localStorage.getItem("highscore") >= 10) {
     colorselected = `blue`;
     spiller.farge = "blue";
     regnbueModus = false;
@@ -442,9 +441,8 @@ blueSelect.onclick = () => {
     duTrenger10();
   }
 };
-//For gul farge
 yellowSelect.onclick = () => {
-  if (lokalLager >= 10) {
+  if (localStorage.getItem("highscore") >= 10) {
     colorselected = `yellow`;
     spiller.farge = "yellow";
     regnbueModus = false;
@@ -456,33 +454,30 @@ yellowSelect.onclick = () => {
     duTrenger10();
   }
 };
-//
-//Denne funksjonen setter regnbueModus til true, som trigger if setning i spiller.js
-//Den gir også regnbueknappen ramme, og fjerner andre rammer. Men aller først sjekker den om
-//highscoren til brukeren er >=15
+
 rainbowSelect.onclick = () => {
-  if (lokalLager >= 15) {
+  if (localStorage.getItem("highscore") >= 15) {
     regnbueModus = true;
     setBorderNone();
     rainbowSelect.style.border = "2px solid white";
   } else {
     let colorselected = "rgb(0,255,0)";
-    status.innerHTML =
+    document.getElementById("status").innerHTML =
       "Du trenger 15+ for regnbuefarge :)";
-    setTimeout(function() {
-      if (lokalLager >= 10) {
-        status.innerHTML = "Velg farge:";
-      } else status.innerHTML = "Få en highscore på 10+ for å låse opp fargevalg!";
+    setTimeout(function () {
+      if (localStorage.getItem("highscore") >= 10) {
+        document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
+      } else document.getElementById("status").innerHTML = "Få en highscore på 10+ for å låse opp fargevalg!";
     }, 2000);
   }
 };
 
 function duTrenger10() {
-  status.innerHTML =
+  document.getElementById("status").innerHTML =
     "Du trenger 10+ i highscore for å bytte farge";
-  setTimeout(function() {
-    if (lokalLager >= 10) {
-      status.innerHTML = "Velg farge:";
-    } else status.innerHTML = "Få en highscore på 10+ for å låse opp fargevalg!";
+  setTimeout(function () {
+    if (localStorage.getItem("highscore") >= 10) {
+      document.getElementById("status").innerHTML = "<br>"+"Velg farge:";
+    } else document.getElementById("status").innerHTML = "Få en highscore på 10+ for å låse opp fargevalg!";
   }, 2000);
 }
